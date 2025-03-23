@@ -64,23 +64,47 @@ func VerifyUser(db *sqlx.DB) gin.HandlerFunc {
 
 func LoginUser(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var req models.User
+		var req struct {
+			Email    string `json:"email"`
+			Password string `json:"password"`
+		}
+
 		if err := c.ShouldBindJSON(&req); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
 			return
 		}
 
+		// Retrieve user from database
 		user, err := repositories.GetUserByEmail(db, req.Email)
-		if err != nil || !pkg.CheckPassword(user.Password, req.Password) {
+		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
 			return
 		}
 
+		// Check if user is verified
+		if !user.Verified {
+			c.JSON(http.StatusForbidden, gin.H{"error": "Account not verified"})
+			return
+		}
+
+		// Validate password
+		if !pkg.CheckPassword(user.Password, req.Password) {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
+			return
+		}
+
+		// Generate tokens
 		jwtToken, _ := pkg.GenerateJWT(user.Email)
 		refreshToken, _ := pkg.GenerateRefreshToken(user.Email)
+
+		// Update refresh token in the database
 		repositories.UpdateRefreshToken(db, user.Email, refreshToken)
 
-		c.JSON(http.StatusOK, gin.H{"jwt": jwtToken, "refreshToken": refreshToken})
+		// Return tokens
+		c.JSON(http.StatusOK, gin.H{
+			"jwt":          jwtToken,
+			"refreshToken": refreshToken,
+		})
 	}
 }
 
