@@ -2,11 +2,13 @@ package main
 
 import (
 	"log"
+	"time"
 
 	"github.com/akhmadst1/tugas-akhir-backend/internal/handlers"
 	"github.com/akhmadst1/tugas-akhir-backend/pkg"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv" // Load env variables
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -22,7 +24,17 @@ func main() {
 	// Initialize Router
 	r := gin.Default()
 
-	// ** API Routes
+	// ** Add CORS Middleware **
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"}, // Update with your frontend URL
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour, // Cache preflight request for 12 hours
+	}))
+
+	// ** API Routes **
 	// Auth
 	r.POST("/register", handlers.RegisterUser(db))
 	r.GET("/verify", handlers.VerifyUser(db))
