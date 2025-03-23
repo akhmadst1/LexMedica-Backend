@@ -25,6 +25,7 @@ func main() {
 	// ** API Routes
 	// Auth
 	r.POST("/register", handlers.RegisterUser(db))
+	r.GET("/verify", handlers.VerifyUser(db))
 	r.POST("/login", handlers.LoginUser(db))
 	r.POST("/refresh", handlers.RefreshToken(db))
 

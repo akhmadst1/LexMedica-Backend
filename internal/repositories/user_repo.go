@@ -12,6 +12,13 @@ func CreateUser(db *sqlx.DB, user models.User) error {
 	return err
 }
 
+// Verify email account
+func VerifyUser(db *sqlx.DB, email string) error {
+	query := "UPDATE users SET verified = TRUE WHERE email = $1"
+	_, err := db.Exec(query, email)
+	return err
+}
+
 // GetUserByEmail retrieves a user by email
 func GetUserByEmail(db *sqlx.DB, email string) (*models.User, error) {
 	var user models.User

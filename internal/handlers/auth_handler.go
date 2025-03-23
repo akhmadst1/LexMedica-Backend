@@ -35,6 +35,33 @@ func RegisterUser(db *sqlx.DB) gin.HandlerFunc {
 	}
 }
 
+func VerifyUser(db *sqlx.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// Get token from query parameters
+		token := c.Query("token")
+		if token == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Token is required"})
+			return
+		}
+
+		// Validate token
+		email, err := pkg.ValidateJWT(token)
+		if err != nil {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid or expired token"})
+			return
+		}
+
+		// Update user as verified in the database
+		err = repositories.VerifyUser(db, email)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not verify user"})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{"message": "Account successfully verified"})
+	}
+}
+
 func LoginUser(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var req models.User

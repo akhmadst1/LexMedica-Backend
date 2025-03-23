@@ -1,6 +1,7 @@
 package pkg
 
 import (
+	"fmt"
 	"os"
 	"time"
 
@@ -18,6 +19,31 @@ func GenerateJWT(email string) (string, error) {
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(jwtSecret)
+}
+
+func ValidateJWT(tokenString string) (string, error) {
+	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("unexpected signing method")
+		}
+		return jwtSecret, nil // Use the correct secret key
+	})
+
+	if err != nil || !token.Valid {
+		return "", fmt.Errorf("invalid token")
+	}
+
+	claims, ok := token.Claims.(jwt.MapClaims)
+	if !ok {
+		return "", fmt.Errorf("invalid claims")
+	}
+
+	email, ok := claims["email"].(string)
+	if !ok {
+		return "", fmt.Errorf("invalid email in token")
+	}
+
+	return email, nil
 }
 
 func GenerateRefreshToken(email string) (string, error) {
