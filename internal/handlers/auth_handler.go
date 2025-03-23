@@ -100,10 +100,11 @@ func LoginUser(db *sqlx.DB) gin.HandlerFunc {
 		// Update refresh token in the database
 		repositories.UpdateRefreshToken(db, user.Email, refreshToken)
 
-		// Return tokens
+		// Return email along with token
 		c.JSON(http.StatusOK, gin.H{
-			"jwt":          jwtToken,
+			"token":        jwtToken,
 			"refreshToken": refreshToken,
+			"email":        user.Email,
 		})
 	}
 }
