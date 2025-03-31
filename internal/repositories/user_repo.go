@@ -28,9 +28,3 @@ func GetUserByEmail(db *sqlx.DB, email string) (*models.User, error) {
 	}
 	return &user, nil
 }
-
-// UpdateRefreshToken updates the refresh token of a user
-func UpdateRefreshToken(db *sqlx.DB, email, refreshToken string) error {
-	_, err := db.Exec("UPDATE users SET refresh_token=$1 WHERE email=$2", refreshToken, email)
-	return err
-}

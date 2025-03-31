@@ -97,10 +97,7 @@ func LoginUser(db *sqlx.DB) gin.HandlerFunc {
 		jwtToken, _ := pkg.GenerateJWT(user.Email)
 		refreshToken, _ := pkg.GenerateRefreshToken(user.Email)
 
-		// Update refresh token in the database
-		repositories.UpdateRefreshToken(db, user.Email, refreshToken)
-
-		// Return email along with token
+		// Send tokens to frontend
 		c.JSON(http.StatusOK, gin.H{
 			"token":        jwtToken,
 			"refreshToken": refreshToken,
@@ -120,7 +117,7 @@ func RefreshToken(db *sqlx.DB) gin.HandlerFunc {
 			return
 		}
 
-		// Validate refresh token
+		// Validate refresh token (no need to check DB)
 		email, err := pkg.ValidateRefreshToken(req.RefreshToken)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid refresh token"})
@@ -131,7 +128,7 @@ func RefreshToken(db *sqlx.DB) gin.HandlerFunc {
 		newJwtToken, _ := pkg.GenerateJWT(email)
 
 		c.JSON(http.StatusOK, gin.H{
-			"jwt": newJwtToken,
+			"token": newJwtToken,
 		})
 	}
 }
