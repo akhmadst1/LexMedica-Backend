@@ -36,10 +36,19 @@ func main() {
 
 	// ** API Routes **
 	// Auth
-	r.POST("/register", handlers.RegisterUser(db))
-	r.GET("/verify", handlers.VerifyUser(db))
-	r.POST("/login", handlers.LoginUser(db))
-	r.POST("/refresh", handlers.RefreshToken(db))
+	r.POST("/auth/register", handlers.RegisterUser(db))
+	r.GET("/auth/verify", handlers.VerifyUser(db))
+	r.POST("/auth/login", handlers.LoginUser(db))
+	r.POST("/auth/refresh", handlers.RefreshToken(db))
+
+	// Chat History
+	r.POST("/history/sessions", handlers.CreateChatSession(db))
+	r.GET("/history/sessions", handlers.GetChatSessions(db))
+	r.DELETE("/history/sessions/:id", handlers.DeleteChatSession(db))
+
+	r.POST("/history/messages", handlers.AddMessage(db))
+	r.GET("/history/messages/:session_id", handlers.GetMessages(db))
+	r.DELETE("/history/messages/:id", handlers.DeleteMessage(db))
 
 	// QnA and Analysis
 	r.POST("/qna", handlers.HandleQnARequest)

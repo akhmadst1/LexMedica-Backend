@@ -3,9 +3,9 @@ package models
 import "time"
 
 type User struct {
-	ID        int       `db:"id"`
-	Email     string    `db:"email"`
-	Password  string    `db:"password"`
-	Verified  bool      `db:"verified"`
-	CreatedAt time.Time `db:"created_at"`
+	ID        int       `json:"id" db:"id"`
+	Email     string    `json:"email" db:"email"`
+	Password  string    `json:"password" db:"password"`
+	Verified  bool      `json:"verified" db:"verified"`
+	CreatedAt time.Time `json:"created_at" db:"created_at"`
 }
