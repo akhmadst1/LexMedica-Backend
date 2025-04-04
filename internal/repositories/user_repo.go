@@ -22,7 +22,7 @@ func VerifyUser(db *sqlx.DB, email string) error {
 // GetUserByEmail retrieves a user by email
 func GetUserByEmail(db *sqlx.DB, email string) (*models.User, error) {
 	var user models.User
-	err := db.Get(&user, "SELECT email, password, verified FROM users WHERE email=$1", email)
+	err := db.Get(&user, "SELECT id, email, password, verified FROM users WHERE email=$1", email)
 	if err != nil {
 		return nil, err // Return nil instead of &user when no user is found
 	}

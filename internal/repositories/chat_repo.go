@@ -26,14 +26,14 @@ func DeleteChatSession(db *sqlx.DB, sessionID int) error {
 	return err
 }
 
-// AddMessage adds a new message to a chat session
-func AddMessage(db *sqlx.DB, message *models.ChatMessage) error {
+// AddChatMessage adds a new message to a chat session
+func AddChatMessage(db *sqlx.DB, message *models.ChatMessage) error {
 	query := `INSERT INTO chat_messages (session_id, sender, message) VALUES ($1, $2, $3) RETURNING id, created_at`
 	return db.QueryRow(query, message.SessionID, message.Sender, message.Message).Scan(&message.ID, &message.CreatedAt)
 }
 
-// GetMessages retrieves all messages from a chat session
-func GetMessages(db *sqlx.DB, sessionID int) ([]models.ChatMessage, error) {
+// GetChatMessages retrieves all messages from a chat session
+func GetChatMessages(db *sqlx.DB, sessionID int) ([]models.ChatMessage, error) {
 	var messages []models.ChatMessage
 	query := `SELECT * FROM chat_messages WHERE session_id = $1 ORDER BY created_at ASC`
 	err := db.Select(&messages, query, sessionID)

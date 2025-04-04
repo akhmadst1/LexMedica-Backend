@@ -65,8 +65,8 @@ func DeleteChatSession(db *sqlx.DB) gin.HandlerFunc {
 	}
 }
 
-// AddMessage adds a new message to a chat session
-func AddMessage(db *sqlx.DB) gin.HandlerFunc {
+// AddChatMessage adds a new message to a chat session
+func AddChatMessage(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var message models.ChatMessage
 		if err := c.ShouldBindJSON(&message); err != nil {
@@ -74,7 +74,7 @@ func AddMessage(db *sqlx.DB) gin.HandlerFunc {
 			return
 		}
 
-		if err := repositories.AddMessage(db, &message); err != nil {
+		if err := repositories.AddChatMessage(db, &message); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to add message"})
 			return
 		}
@@ -83,16 +83,16 @@ func AddMessage(db *sqlx.DB) gin.HandlerFunc {
 	}
 }
 
-// GetMessages retrieves all messages from a chat session
-func GetMessages(db *sqlx.DB) gin.HandlerFunc {
+// GetChatMessages retrieves all messages from a chat session
+func GetChatMessages(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sessionID, err := strconv.Atoi(c.Param("session_id"))
+		sessionID, err := strconv.Atoi(c.Query("session_id"))
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session ID"})
 			return
 		}
 
-		messages, err := repositories.GetMessages(db, sessionID)
+		messages, err := repositories.GetChatMessages(db, sessionID)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve messages"})
 			return

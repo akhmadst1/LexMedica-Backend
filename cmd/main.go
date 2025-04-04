@@ -42,13 +42,13 @@ func main() {
 	r.POST("/auth/refresh", handlers.RefreshToken(db))
 
 	// Chat History
-	r.POST("/history/sessions", handlers.CreateChatSession(db))
-	r.GET("/history/sessions", handlers.GetChatSessions(db))
-	r.DELETE("/history/sessions/:id", handlers.DeleteChatSession(db))
+	r.POST("/history/session", handlers.CreateChatSession(db))
+	r.GET("/history/session", handlers.GetChatSessions(db))
+	r.DELETE("/history/session/:session_id", handlers.DeleteChatSession(db))
 
-	r.POST("/history/messages", handlers.AddMessage(db))
-	r.GET("/history/messages/:session_id", handlers.GetMessages(db))
-	r.DELETE("/history/messages/:id", handlers.DeleteMessage(db))
+	r.POST("/history/message", handlers.AddChatMessage(db))
+	r.GET("/history/message", handlers.GetChatMessages(db))
+	r.DELETE("/history/message/:message_id", handlers.DeleteMessage(db))
 
 	// QnA and Analysis
 	r.POST("/qna", handlers.HandleQnARequest)

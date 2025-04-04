@@ -99,9 +99,10 @@ func LoginUser(db *sqlx.DB) gin.HandlerFunc {
 
 		// Send tokens to frontend
 		c.JSON(http.StatusOK, gin.H{
+			"id":           user.ID,
+			"email":        user.Email,
 			"token":        jwtToken,
 			"refreshToken": refreshToken,
-			"email":        user.Email,
 		})
 	}
 }
