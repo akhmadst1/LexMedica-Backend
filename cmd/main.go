@@ -37,9 +37,10 @@ func main() {
 	// ** API Routes **
 	// Auth
 	r.POST("/auth/register", handlers.RegisterUser(db))
-	r.GET("/auth/verify", handlers.VerifyUser(db))
+	r.POST("/auth/resend_email_verification", handlers.ResendEmailVerification(db))
+	r.GET("/auth/verify_email", handlers.VerifyEmailUser(db))
 	r.POST("/auth/login", handlers.LoginUser(db))
-	r.POST("/auth/refresh", handlers.RefreshToken(db))
+	r.POST("/auth/refresh_token", handlers.RefreshToken(db))
 
 	// Chat History
 	r.POST("/history/session", handlers.CreateChatSession(db))

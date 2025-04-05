@@ -14,7 +14,7 @@ func CreateChatSession(db *sqlx.DB, session *models.ChatSession) error {
 // GetChatSessions retrieves all chat sessions for a user
 func GetChatSessions(db *sqlx.DB, userID int) ([]models.ChatSession, error) {
 	var sessions []models.ChatSession
-	query := `SELECT * FROM chat_sessions WHERE user_id = $1`
+	query := `SELECT * FROM chat_sessions WHERE user_id = $1 ORDER BY started_at DESC`
 	err := db.Select(&sessions, query, userID)
 	return sessions, err
 }
