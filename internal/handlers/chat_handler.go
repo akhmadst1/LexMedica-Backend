@@ -50,7 +50,7 @@ func GetChatSessions(db *sqlx.DB) gin.HandlerFunc {
 // DeleteChatSession deletes a chat session
 func DeleteChatSession(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sessionID, err := strconv.Atoi(c.Param("id"))
+		sessionID, err := strconv.Atoi(c.Param("session_id"))
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session ID"})
 			return
@@ -105,7 +105,7 @@ func GetChatMessages(db *sqlx.DB) gin.HandlerFunc {
 // DeleteMessage deletes a chat message
 func DeleteMessage(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		messageID, err := strconv.Atoi(c.Param("id"))
+		messageID, err := strconv.Atoi(c.Param("message_id"))
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid message ID"})
 			return
