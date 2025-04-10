@@ -103,8 +103,8 @@ func ResendEmailVerification(db *sqlx.DB) gin.HandlerFunc {
 
 func VerifyEmailUser(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// Get token from query parameters
-		token := c.Query("token")
+		// Get token from path parameters
+		token := c.Param("token")
 		if token == "" {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Token is required"})
 			return

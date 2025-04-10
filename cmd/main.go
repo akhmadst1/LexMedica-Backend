@@ -38,22 +38,25 @@ func main() {
 	// Auth
 	r.POST("/auth/register", handlers.RegisterUser(db))
 	r.POST("/auth/resend_email_verification", handlers.ResendEmailVerification(db))
-	r.GET("/auth/verify_email", handlers.VerifyEmailUser(db))
+	r.GET("/auth/verify_email/:token", handlers.VerifyEmailUser(db))
 	r.POST("/auth/login", handlers.LoginUser(db))
 	r.POST("/auth/refresh_token", handlers.RefreshToken(db))
-
-	// Chat History
-	r.POST("/history/session", handlers.CreateChatSession(db))
-	r.GET("/history/session", handlers.GetChatSessions(db))
-	r.DELETE("/history/session/:session_id", handlers.DeleteChatSession(db))
-
-	r.POST("/history/message", handlers.AddChatMessage(db))
-	r.GET("/history/message", handlers.GetChatMessages(db))
-	r.DELETE("/history/message/:message_id", handlers.DeleteMessage(db))
 
 	// QnA and Analysis
 	r.POST("/chat/qna", handlers.HandleQnARequest)
 	r.POST("/chat/analyze", handlers.HandleDisharmonyAnalysis)
+
+	// History routes require authentication
+	history := r.Group("/history", pkg.AuthMiddleware())
+	{
+		history.POST("/session", handlers.CreateChatSession(db))
+		history.GET("/session/:user_id", handlers.GetChatSessions(db))
+		history.DELETE("/session/:session_id", handlers.DeleteChatSession(db))
+
+		history.POST("/message", handlers.AddChatMessage(db))
+		history.GET("/message/:session_id", handlers.GetChatMessages(db))
+		history.DELETE("/message/:message_id", handlers.DeleteMessage(db))
+	}
 
 	// Start Server
 	log.Println("Web App Backend running on port 8080...")

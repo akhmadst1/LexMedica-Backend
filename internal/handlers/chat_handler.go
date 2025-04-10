@@ -31,7 +31,7 @@ func CreateChatSession(db *sqlx.DB) gin.HandlerFunc {
 // GetChatSessions retrieves all chat sessions for a user
 func GetChatSessions(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		userID, err := strconv.Atoi(c.Query("user_id"))
+		userID, err := strconv.Atoi(c.Param("user_id"))
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid user ID"})
 			return
@@ -86,7 +86,7 @@ func AddChatMessage(db *sqlx.DB) gin.HandlerFunc {
 // GetChatMessages retrieves all messages from a chat session
 func GetChatMessages(db *sqlx.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		sessionID, err := strconv.Atoi(c.Query("session_id"))
+		sessionID, err := strconv.Atoi(c.Param("session_id"))
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session ID"})
 			return
