@@ -52,8 +52,8 @@ func main() {
 	r.DELETE("/history/message/:message_id", handlers.DeleteMessage(db))
 
 	// QnA and Analysis
-	r.POST("/qna", handlers.HandleQnARequest)
-	r.POST("/analyze", handlers.HandleDisharmonyAnalysis)
+	r.POST("/chat/qna", handlers.HandleQnARequest)
+	r.POST("/chat/analyze", handlers.HandleDisharmonyAnalysis)
 
 	// Start Server
 	log.Println("Web App Backend running on port 8080...")
