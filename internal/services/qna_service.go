@@ -68,6 +68,7 @@ func StreamQnAAnswer(question string, w http.ResponseWriter) error {
 		// Only forward JSON lines from Ollama
 		if strings.HasPrefix(line, "{") {
 			// SSE format
+			fmt.Fprintf(w, "data: %s\n\n", line)
 			flusher.Flush()
 		}
 	}
