@@ -28,7 +28,12 @@ func HandleQnARequest(c *gin.Context) {
 	}
 
 	// Start streaming
-	if err := services.StreamQnAAnswer(req.Question, c.Writer); err != nil {
+	// Llama Model
+	// if err := services.StreamLlamaAnswer(req.Question, c.Writer); err != nil {
+	// 	c.String(http.StatusInternalServerError, "Streaming error: %v", err)
+	// }
+	// OpenAI Model
+	if err := services.StreamOpenAIAnswer(req.Question, c.Writer); err != nil {
 		c.String(http.StatusInternalServerError, "Streaming error: %v", err)
 	}
 }

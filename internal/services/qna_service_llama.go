@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func StreamQnAAnswer(question string, w http.ResponseWriter) error {
+func StreamLlamaAnswer(question string, w http.ResponseWriter) error {
 	ollamaUrl := os.Getenv("OLLAMA_API_URL")
 	modelName := "llama3"
 
