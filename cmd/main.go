@@ -58,6 +58,17 @@ func main() {
 		history.DELETE("/message/:message_id", handlers.DeleteMessage(db))
 	}
 
+	// Documents routes require authentication
+	docs := r.Group("/document", pkg.AuthMiddleware())
+	{
+		docs.POST("", handlers.CreateDocument(db))
+		docs.GET("", handlers.GetAllDocuments(db))
+		docs.GET("/:id", handlers.GetDocumentByID(db))
+		docs.PUT("/:id", handlers.UpdateDocument(db))
+		docs.DELETE("/:id", handlers.DeleteDocument(db))
+		docs.GET("/view/:id", handlers.ViewDocument(db))
+	}
+
 	// Start Server
 	log.Println("Web App Backend running on port 8080...")
 	r.Run(":8080")

@@ -39,8 +39,7 @@ func ConnectDB() *sqlx.DB {
 	CREATE TABLE IF NOT EXISTS documents (
 	    id SERIAL PRIMARY KEY,
 	    title VARCHAR(255) NOT NULL,
-	    source TEXT NOT NULL,
-	    content BYTEA NOT NULL
+	    source TEXT NOT NULL
 	);
 
 	CREATE TABLE IF NOT EXISTS chat_messages (
