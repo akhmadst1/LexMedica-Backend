@@ -24,6 +24,9 @@ func main() {
 	// Initialize Router
 	r := gin.Default()
 
+	// Serve static files for the documents
+	r.Static("/docs", "./docs")
+
 	// ** Add CORS Middleware **
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"http://localhost:3000"}, // Update with your frontend URL
