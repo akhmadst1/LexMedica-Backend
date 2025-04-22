@@ -55,7 +55,7 @@ func StreamOpenAIAnswer(question string, w http.ResponseWriter) error {
 			break
 		}
 
-		line = strings.TrimSpace(line)
+		line = strings.TrimSuffix(line, "\n")
 
 		if line == "" || line == "data: [DONE]" {
 			continue
@@ -75,11 +75,10 @@ func StreamOpenAIAnswer(question string, w http.ResponseWriter) error {
 				continue
 			}
 
-			// Send just the content text
 			if len(parsed.Choices) > 0 {
 				content := parsed.Choices[0].Delta.Content
 				if content != "" {
-					fmt.Fprintf(w, "data: %s\n\n", content)
+					fmt.Fprintf(w, "%s", content)
 					flusher.Flush()
 				}
 			}
