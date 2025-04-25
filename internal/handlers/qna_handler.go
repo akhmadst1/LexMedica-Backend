@@ -8,8 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// HandleQnARequest forwards the question to the QnA microservice
-func HandleQnARequest(c *gin.Context) {
+// QnARequest forwards the question to the QnA microservice
+func QnAResponse(c *gin.Context) {
 	var req models.QnARequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})

@@ -1,33 +1,91 @@
 package services
 
 import (
-	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
+	"bufio"
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"os"
+	"strings"
 )
 
-// GetLLMAnalysis calls the Disharmony LLM microservice API
-// func GetDisharmonyAnalysis(text string) (models.DisharmonyResponse, error) {
-// 	client := resty.New()
+func StreamOpenAIDisharmonyAnalysis(regulations string, w http.ResponseWriter) error {
+	prompt := "Berdasarkan regulasi berikut:" + regulations + "Periksa apakah terdapat potensi disharmoni antara regulasi tersebut. Jika ada, berikan penjelasan singkat mengenai potensi disharmoni tersebut."
+	openaiKey := os.Getenv("OPENAI_API_KEY")
+	openaiUrl := "https://api.openai.com/v1/chat/completions"
+	modelName := "gpt-4"
 
-// 	var response models.DisharmonyResponse
-// 	_, err := client.R().
-// 		SetHeader("Content-Type", "application/json").
-// 		SetBody(models.DisharmonyRequest{Text: text}).
-// 		SetResult(&response).
-// 		Post("http://disharmony-service:8082/analyze") // Assuming service runs on port 8082
+	payload := []byte(fmt.Sprintf(`{
+		"model": "%s",
+		"stream": true,
+		"messages": [{"role": "user", "content": %q}]
+	}`, modelName, prompt))
 
-// 	if err != nil {
-// 		log.Println("Error calling disharmony service:", err)
-// 		return models.DisharmonyResponse{}, err
-// 	}
-
-// 	return response, nil
-// }
-
-// GetLLMAnalysis returns a dummy analysis result for now
-func GetDisharmonyAnalysis(text string) (models.DisharmonyResponse, error) {
-	// Mock response
-	response := models.DisharmonyResponse{
-		Result: "Dummy analysis for the provided regulation text.",
+	req, err := http.NewRequest("POST", openaiUrl, bytes.NewBuffer(payload))
+	if err != nil {
+		return err
 	}
-	return response, nil
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer "+openaiKey)
+
+	// Set streaming headers before doing the request
+	w.Header().Set("Content-Type", "text/event-stream")
+	w.Header().Set("Cache-Control", "no-cache")
+	w.Header().Set("Connection", "keep-alive")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	flusher, ok := w.(http.Flusher)
+	if !ok {
+		return fmt.Errorf("streaming unsupported")
+	}
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	reader := bufio.NewReader(resp.Body)
+
+	for {
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			fmt.Println("Error reading stream:", err)
+			break
+		}
+
+		line = strings.TrimSuffix(line, "\n")
+
+		if line == "" || line == "data: [DONE]" {
+			continue
+		}
+
+		if strings.HasPrefix(line, "data: ") {
+			jsonPart := strings.TrimPrefix(line, "data: ")
+			var parsed struct {
+				Choices []struct {
+					Delta struct {
+						Content string `json:"content"`
+					} `json:"delta"`
+				} `json:"choices"`
+			}
+			if err := json.Unmarshal([]byte(jsonPart), &parsed); err != nil {
+				fmt.Println("Error parsing chunk:", err)
+				continue
+			}
+
+			if len(parsed.Choices) > 0 {
+				content := parsed.Choices[0].Delta.Content
+				if content != "" {
+					fmt.Fprintf(w, "%s", content)
+					flusher.Flush()
+				}
+			}
+		}
+	}
+
+	flusher.Flush()
+	return nil
 }

@@ -1,11 +1,10 @@
 package models
 
-// DisharmonyRequest represents a regulation text for analysis
-type DisharmonyRequest struct {
-	Text string `json:"text" binding:"required"`
+type DisharmonyAnalysisRequest struct {
+	Regulations string `json:"regulations"` // Accepts any number of regs
+	Method      string `json:"method"`      // Prompt method
 }
 
-// DisharmonyResponse represents the disharmony analysis result
-type DisharmonyResponse struct {
+type DisharmonyAnalysisResponse struct {
 	Result string `json:"result"`
 }

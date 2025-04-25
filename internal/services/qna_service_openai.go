@@ -14,12 +14,13 @@ func StreamOpenAIAnswer(question string, w http.ResponseWriter) error {
 	openaiKey := os.Getenv("OPENAI_API_KEY")
 	openaiUrl := "https://api.openai.com/v1/chat/completions"
 	modelName := "gpt-4"
+	prompt := `Dalam bahasa Indonesia dalam plain text dan newline saja (tanpa numbering, bullets, dan format lainnya), berikan 2 pasal hukum kesehatan di Indonesia yang mengatur isu berikut:` + question
 
 	payload := []byte(fmt.Sprintf(`{
 		"model": "%s",
 		"stream": true,
 		"messages": [{"role": "user", "content": %q}]
-	}`, modelName, question))
+	}`, modelName, prompt))
 
 	req, err := http.NewRequest("POST", openaiUrl, bytes.NewBuffer(payload))
 	if err != nil {

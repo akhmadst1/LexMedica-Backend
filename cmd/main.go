@@ -46,8 +46,8 @@ func main() {
 	r.POST("/auth/refresh_token", handlers.RefreshToken(db))
 
 	// QnA and Analysis
-	r.POST("/chat/qna", handlers.HandleQnARequest)
-	r.POST("/chat/analyze", handlers.HandleDisharmonyAnalysis)
+	r.POST("/chat/qna", handlers.QnAResponse)
+	r.POST("/chat/analyze", handlers.DisharmonyAnalysis)
 
 	// History routes require authentication
 	history := r.Group("/history", pkg.AuthMiddleware())
