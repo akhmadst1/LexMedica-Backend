@@ -8,13 +8,15 @@ import (
 	"net/http"
 	"os"
 	"strings"
+
+	"github.com/akhmadst1/tugas-akhir-backend/pkg"
 )
 
 func StreamOpenAIDisharmonyAnalysis(regulations string, w http.ResponseWriter) error {
-	prompt := "Berdasarkan regulasi berikut:" + regulations + "Periksa apakah terdapat potensi disharmoni antara regulasi tersebut. Jika ada, berikan penjelasan singkat mengenai potensi disharmoni tersebut."
+	prompt := pkg.CostarPromptFewShot(regulations)
 	openaiKey := os.Getenv("OPENAI_API_KEY")
 	openaiUrl := "https://api.openai.com/v1/chat/completions"
-	modelName := "gpt-4"
+	modelName := "gpt-4o"
 
 	payload := []byte(fmt.Sprintf(`{
 		"model": "%s",

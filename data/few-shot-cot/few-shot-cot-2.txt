@@ -1,0 +1,297 @@
+--------------------------------------------------
+Test Case: tc1 - Tenaga Kesehatan
+Ground Truth Disharmony:
+Dalam ketentuan tersebut di atas, ditemukan potensi disharmoni dalam perihal tuntutan ganti rugi bagi tenaga kesehatan. Pasal 58 UU Kesehatan secara tegas mengatur pengecualian bahwa tuntutan ganti rugi tidak berlaku bagi tenaga kesehatan yang melakukan tindakan penyelamatan nyawa atau pencegahan kecacatan dalam keadaan darurat. Namun Pasal 77 UU Tenaga Kesehatan tidak merinci lebih jauh dan jelas apakah semua kesalahan atau kelalaian tenaga kesehatan dapat dimintakan ganti rugi.
+
+GPT Output:
+Berdasarkan ketentuan tersebut, terdapat potensi disharmoni antara Pasal 58 ayat (2) UU Kesehatan dan Pasal 77 UU Tenaga Kesehatan. Dalam Pasal 58 ayat (2) UU Kesehatan, dinyatakan bahwa tenaga kesehatan tidak dapat dituntut ganti rugi jika mereka melakukan tindakan penyelamatan nyawa atau pencegahan kecacatan dalam keadaan darurat. Namun, Pasal 77 UU Tenaga Kesehatan menetapkan bahwa penerima pelayanan kesehatan yang dirugikan akibat kesalahan atau kelalaian tenaga kesehatan dapat meminta ganti rugi.
+
+Potensi konflik muncul karena Pasal 77 UU Tenaga Kesehatan memberikan hak kepada penerima pelayanan untuk menuntut ganti rugi, sementara Pasal 58 ayat (2) UU Kesehatan memberikan kekebalan kepada tenaga kesehatan dalam situasi darurat. Ini dapat menimbulkan kebingungan mengenai batasan kapan tenaga kesehatan dapat diminta pertanggungjawaban terhadap tindakan mereka.
+
+Untuk menyelesaikan disharmoni ini, diperlukan klarifikasi lebih lanjut mengenai definisi "keadaan darurat" sebagaimana dimaksud dalam Pasal 58 ayat (2) agar tidak ada ambiguitas dalam penerapan hukum. Selain itu, perlu diatur dengan jelas bagaimana penerapan kekebalan ini dan apa saja kriteria yang harus dipenuhi agar tenaga kesehatan dianggap bertindak dalam koridor "keadaan darurat." Hal ini untuk memastikan bahwa tenaga kesehatan dapat bekerja dengan tenang dalam situasi krisis dan untuk memberikan kejelasan kepada penerima layanan tentang hak-haknya dalam mendapatkan ganti rugi.
+
+Similarity Score: 0.9613
+Precision: 0.2335
+Recall: 0.6866
+F1 Score: 0.3485
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc2 - Transplantasi Organ
+Ground Truth Disharmony:
+Penyembuhan penyakit dan pemulihan kesehatan diselenggarakan untuk mengembalikan status kesehatan, mengembalikan fungsi tubuh akibat penyakit dan/atau akibat cacat, atau menghilangkan cacat. Dalam Pasal 64 UU Kesehatan disebutkan bahwa penyembuhan penyakit dan pemulihan kesehatan dapat dilakukan melalui salah satunya adalah transplantasi organ. Dalam Pasal 65 ayat (3) UU Kesehatan mengatur bahwa ketentuan mengenai syarat dan tata cara penyelenggaraan transplantasi organ diatur dengan peraturan pemerintah. Terkait dengan ketentuan tersebut, terdapat Peraturan Menteri Kesehatan Nomor 38 Tahun 2016 tentang Penyelenggaraan Transplantasi Organ (Permenkes Penyelenggaraan Transplantasi Organ) yang dalam konsiderans “mengingat”-nya mencantumkan UU Kesehatan. Sehingga terhadap hal tersebut terdapat ketidaksinkronan amanat peraturan pelaksanaan. Hal ini dikarenakan Pasal 65 UU Kesehatan mengatur secara tegas bahwa terkait syarat dan tata cara penyelenggaraan transplantasi organ dan/atau jaringan tubuh diatur dengan peraturan pemerintah, akan tetapi yang diatur lebih lanjut dalam UU Kesehatan tersebut adalah Permenkes Transplantasi Organ.
+
+GPT Output:
+Berdasarkan ketentuan yang diberikan, terdapat potensi disharmoni antara Pasal 64 dan Pasal 65 ayat (3) Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan dengan pengaturan dalam Peraturan Menteri Kesehatan Nomor 38 Tahun 2016 tentang Penyelenggaraan Transplantasi Organ. Pasal 64 UU Kesehatan menyebutkan bahwa penyembuhan penyakit dan pemulihan kesehatan dapat dilakukan melalui transplantasi organ dan/atau jaringan tubuh. Sementara itu, Pasal 65 ayat (3) UU Kesehatan menyatakan bahwa ketentuan mengenai syarat dan tata cara penyelenggaraan transplantasi organ dan/atau jaringan tubuh akan ditetapkan dengan Peraturan Pemerintah. Dalam konteks ini, Peraturan Menteri Kesehatan Nomor 38 Tahun 2016 yang mengatur mengenai transplantasi organ menyebutkan dasar hukumnya adalah UU Kesehatan, namun tidak ada indikasi bahwa Peraturan Pemerintah yang dimaksud telah dikeluarkan.
+
+Potensi disharmoni muncul karena Peraturan Menteri Kesehatan seharusnya dijadikan sebagai peraturan pelaksanaan yang lebih rendah dari peraturan pemerintah, bukan langsung dari undang-undang. Hal ini berarti Peraturan Menteri tidak memiliki dasar yang memadai jika belum ada Peraturan Pemerintah yang ditetapkan terlebih dahulu untuk mengatur persyaratan dan tata cara seperti yang disebutkan dalam Pasal 65 ayat (3). Akibat dari ketiadaan Peraturan Pemerintah tersebut dapat menciptakan ketidakpastian dalam penegakan hukum dan implementasi teknis penyelenggaraan transplantasi organ dan/atau jaringan tubuh.
+
+Untuk mengatasi potensi disharmoni ini, disarankan agar diterbitkan Peraturan Pemerintah yang sesuai sebagai dasar bagi pengaturan lebih lanjut melalui Peraturan Menteri tentang transplantasi organ dan/atau jaringan tubuh. Dengan adanya peraturan pemerintah yang jelas, pelaksanaan ketentuan ini dapat lebih terstruktur dan sesuai dengan hirarki peraturan perundang-undangan di Indonesia.
+
+Similarity Score: 0.9413
+Precision: 0.3840
+Recall: 0.6547
+F1 Score: 0.4840
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc3 - Frasa 'menentukan sendiri kapan dan berapa sering ingin bereproduksi sehat secara medis'
+Ground Truth Disharmony:
+Berdasarkan ketentuan pada kedua Pasal di atas, terdapat potensi disharmoni antara Pasal 72 huruf c UU Kesehatan dengan Pasal 1 angka 8 UU PPPK. Permasalahan pada ketentuan Pasal 72 huruf c UU Kesehatan adalah tidak jelasnya maksud rumusan frasa “bereproduksi sehat secara medis.” Tidak ada penjelasan pada Pasal 72 huruf c secara langsung melalui UU. Selain itu, Pasal 72 huruf c telah menjamin hak seseorang untuk menentukan sendiri kapan dan berapa sering ingin bereproduksi sehat secara medis, namun jika diperhatikan Pasal 1 angka (8) UU PPPK, terdapat upaya mengatur kelahiran anak, jarak dan usia ideal melahirkan, dan mengatur kehamilan. Upaya tersebut dilakukan sesuai dengan hak reproduksi untuk mewujudkan keluarga yang berkualitas. Namun, agar pengaturan kelahiran anak, jarak dan usia ideal melahirkan serta mengatur kehamilan tidak kontradiktif dengan pengaturan adanya hak seseorang untuk menentukan sendiri kapan dan berapa sering ingin bereproduksi sehat secara medis, maka perlu diatur Penjelasan lebih rinci mengenai bereproduksi sehat secara medis tersebut.
+
+GPT Output:
+Berdasarkan ketentuan Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan dan Undang-Undang Nomor 52 Tahun 2009 tentang Perkembangan Penduduk dan Pembangunan Keluarga, terdapat potensi disharmoni dalam definisi hak reproduksi. Pasal 72 huruf c UU Kesehatan menekankan hak individu untuk menentukan kapan dan seberapa sering ingin bereproduksi, dengan syarat tidak bertentangan dengan norma agama. Sementara itu, Pasal 1 angka 8 UU Perkembangan Penduduk dan Pembangunan Keluarga merumuskan Keluarga Berencana sebagai upaya yang lebih terstruktur untuk mengatur kelahiran dengan mempertimbangkan jarak, usia ideal, dan kehamilan, menunjukkan pendekatan yang lebih sistematis melalui promosi, perlindungan, dan bantuan.
+
+Perbedaan utama dalam kedua ketentuan ini adalah pendekatan terhadap hak reproduksi. UU Kesehatan lebih menitikberatkan pada pilihan individu, sedangkan UU Perkembangan Penduduk dan Pembangunan Keluarga lebih memperhatikan intervensi programatik melalui Keluarga Berencana. Hal ini dapat menimbulkan kebingungan dalam pelaksanaan kebijakan terkait hak reproduksi, terutama mengenai sejauh mana intervensi negara dapat dilakukan tanpa melanggar hak individu.
+
+Untuk mengatasi disharmoni ini, direkomendasikan untuk meninjau kembali peraturan perundang-undangan agar mengharmonisasikan pendekatan hak reproduksi dengan mempertimbangkan kebijakan Keluarga Berencana. Harmonisasi dapat dicapai dengan menjelaskan batasan dan mekanisme pilihan individu dalam program Keluarga Berencana, seraya memastikan kepatuhan terhadap norma agama dan budaya yang relevan.
+
+Similarity Score: 0.9418
+Precision: 0.2880
+Recall: 0.3548
+F1 Score: 0.3179
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc4 - Ketentuan Aborsi
+Ground Truth Disharmony:
+Potensi disharmoni juga mungkin terjadi akibat adanya perbedaan umur kehamilan yang dapat dilakukan aborsi akibat perkosaan, dimana Pasal 76 huruf a UU Kesehatan menetapkan umur kehamilan sebelum 6 (enam) minggu dan Pasal 31 ayat (2) Peraturan Pemerintah Nomor 61 Tahun 2014 tentang Kesehatan Reproduksi (PP Kesehatan Reproduksi) menetapkan umur kehamilan paling lama 40 (empat puluh) hari dihitung sejak hari pertama haid terakhir. Perbedaan kedua ketentuan tersebut menyebabkan munculnya bermacam interpretasi pada pelaksanaannya.
+
+GPT Output:
+Berdasarkan ketentuan dari dua regulasi tersebut, terdapat potensi disharmoni dalam pengaturan batas waktu pelaksanaan aborsi. Pasal 76 UU Kesehatan menyatakan bahwa aborsi hanya dapat dilakukan sebelum kehamilan berumur 6 minggu, kecuali dalam hal kedaruratan medis. Sementara itu, PP Nomor 61 Tahun 2014 tentang Kesehatan Reproduksi mengizinkan tindakan aborsi akibat perkosaan dilakukan apabila usia kehamilan paling lama 40 hari, atau sekitar 5 minggu 5 hari, dihitung sejak hari pertama haid terakhir.
+
+Potensi disharmoni ini terlihat dari perbedaan batas waktu pelaksanaan aborsi yang dapat menimbulkan ketidakpastian bagi tenaga medis dan perempuan yang hendak melakukan aborsi akibat perkosaan. Sebagian pihak mungkin merujuk pada PP untuk kasus perkosaan, sedangkan pihak lain dapat saja merujuk pada UU Kesehatan, yang berpotensi menimbulkan kebingungan.
+
+Untuk mengatasi disharmoni ini, disarankan untuk membuat klarifikasi norma melalui revisi terhadap salah satu regulasi tersebut agar ada konsistensi dalam batas waktu pelaksanaan aborsi, terutama untuk kasus-kasus yang disebabkan oleh perkosaan. Penyesuaian tersebut sebaiknya melibatkan diskusi dengan pihak terkait guna memastikan pertimbangan kesehatan, hukum, dan sosial dalam penyelesaian masalah tersebut.
+
+Similarity Score: 0.9513
+Precision: 0.2395
+Recall: 0.5556
+F1 Score: 0.3347
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc5 - Pelayanan Darah
+Ground Truth Disharmony:
+Ketentuan Pasal 87 ayat (1) dan (2) UU Kesehatan tersebut terdapat inkonsisten nomenklatur dimana unit yang melakukan pelayanan darah disebut dengan Unit Donor Darah dalam UU Kepalangmerahan, sedangkan UU Kesehatan menyebutnya dengan Unit Transfusi Darah yang melakukan penyelenggaraan donor darah dan pengolahan darah. Hal ini menyebabkan permasalahan implementasi pelayanan darah di lapangan.
+
+GPT Output:
+Dalam ketentuan yang diberikan, terdapat potensi disharmoni antara Pasal 87 ayat (2) Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan dengan Pasal 22 huruf b Undang-Undang Nomor 1 Tahun 2018 tentang Kepalangmerahan. Pasal 87 ayat (2) UU Kesehatan menyatakan bahwa Unit Transfusi Darah (UTD) dapat diselenggarakan oleh Pemerintah, pemerintah daerah, dan/atau organisasi sosial yang tugas pokok dan fungsinya di bidang kepalangmerahan, tanpa menyebut secara spesifik pihak-pihak tersebut. Di sisi lain, Pasal 22 huruf b UU Kepalangmerahan, melalui penjelasannya, menyatakan bahwa pelayanan darah dilakukan oleh PMI melalui Unit Donor Darah (UDD) PMI. Ketentuan ini dapat menimbulkan kebingungan dalam praktek mengenai siapa yang memiliki kewenangan utama dalam penyelenggaraan donor darah, karena adanya terminologi dan pihak penyelenggara yang tidak seragam. Untuk menghindari kebingungan dan memastikan kejelasan dalam penyelenggaraan pelayanan darah, disarankan agar peraturan mengenai pihak yang dapat menyelenggarakan UTD diselaraskan. Pengaturan lebih lanjut bisa menyebutkan secara eksplisit mengenai organisasi mana saja yang berwenang menyelenggarakan Unit Transfusi Darah, termasuk peran dan batasan masing-masing pihak, misalnya melalui peraturan pelaksana yang lebih detil. Hal ini penting untuk menjamin kesinambungan dan keamanan pelayanan darah di Indonesia.
+
+Similarity Score: 0.9448
+Precision: 0.1854
+Recall: 0.6346
+F1 Score: 0.2870
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc6 - Unit Transfusi Darah
+Ground Truth Disharmony:
+Berdasarkan ketentuan tersebut, terdapat inkonsistensi pada frasa “dan/atau” dalam Pasal 87 UU Kesehatan dengan Pasal 34 PP Pelayanan Darah. Pasal 34 ayat (1) mengatur bahwa UTD dapat diselenggarakan oleh Pemerintah, pemerintah daerah, atau organisasi sosial yang tugas pokok dan fungsinya di bidang kepalangmerahan. Pengaturan pada PP Pelayanan Darah hanya menggunakan frasa “atau.” Rumusan kedua pasal tersebut secara implementasi dapat mengakibatkan kerancuan dalam pendirian UTD, yang akan berefek pada ketidakpastian hak dan tanggung jawab penyelenggaraan UTD.
+
+GPT Output:
+Terdapat potensi disharmoni antara Pasal 87 ayat (2) Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan dengan Pasal 34 ayat (1) Peraturan Pemerintah Nomor 7 Tahun 2011 tentang Pelayanan Darah. Dalam Pasal 87 ayat (2) UU Kesehatan, dinyatakan bahwa Unit Transfusi Darah (UTD) dapat diselenggarakan oleh Pemerintah, pemerintah daerah, dan/atau organisasi sosial yang tugas pokok dan fungsinya di bidang kepalangmerahan. Penggunaan frasa "dan/atau" di sini mengindikasikan bahwa UTD dapat diselenggarakan oleh lebih dari satu pihak secara bersamaan.
+
+Sebaliknya, Pasal 34 ayat (1) PP Pelayanan Darah mengatur bahwa UTD dapat diselenggarakan oleh Pemerintah, pemerintah daerah, atau organisasi sosial yang tugas pokok dan fungsinya di bidang kepalangmerahan. Penggunaan frasa "atau" mengartikan bahwa pelaksanaan UTD adalah secara eksklusif oleh salah satu pihak saja, bukan gabungan.
+
+Ketidaksinkronan dalam penggunaan frasa tersebut dapat menimbulkan kebingungan dalam implementasi di lapangan, terutama mengenai pihak yang berwenang menyelenggarakan UTD. Hal ini berpotensi menyebabkan tumpang tindih atau kekosongan dalam pelaksanaan fungsi-fungsi UTD di berbagai wilayah.
+
+Untuk mengatasi disharmoni ini, direkomendasikan adanya penyesuaian terhadap ketentuan tersebut agar seragam, baik itu dengan mengubah frasa dalam PP Pelayanan Darah untuk mengadopsi "dan/atau" jika dimaksudkan agar penyelenggaraan dapat dilakukan bersama-sama, atau sebaliknya, menyesuaikan UU Kesehatan agar selaras dengan penggunaan frasa "atau" seperti yang ada di PP Pelayanan Darah, jika dimaksudkan hanya oleh salah satu pihak. Selain itu, pedoman pelaksanaan atau petunjuk teknis dapat diterbitkan untuk menjelaskan otoritas dan tanggung jawab masing-masing pihak dalam penyelenggaraan UTD.
+
+Similarity Score: 0.9716
+Precision: 0.2381
+Recall: 0.7333
+F1 Score: 0.3595
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc7 - Unit Transfusi Darah
+Ground Truth Disharmony:
+Berdasarkan ketentuan tersebut, terdapat potensi disharmoni antara Pasal 98 ayat (1) dan Pasal 111 ayat (3) UU Kesehatan dengan Pasal 4 UU Jaminan Produk Halal. Hal ini dikarenakan dalam UU Jaminan Produk Halal menyebutkan bahwa makanan, minuman, obat dan kosmetik masuk dalam definisi produk. Selanjutnya berdasarkan ketentuan Pasal 4 UU Jaminan Produk Halal, produk wajib bersertifikat halal. Sehingga UU Kesehatan perlu menyesuaikan dengan UU Jaminan Produk Halal dikarenakan UU Kesehatan belum mengakomodir terkait adanya kewajiban bersertifikat halal khususnya untuk sediaan farmasi, makanan dan minuman.
+
+GPT Output:
+Dalam ketentuan regulasi yang diberikan, terdapat potensi disharmoni antara Undang-Undang Kesehatan dan Undang-Undang Jaminan Produk Halal mengenai persyaratan produk yang beredar di wilayah Indonesia.
+
+Pasal 98 ayat (1) UU Kesehatan menyatakan bahwa sediaan farmasi dan alat kesehatan harus aman, berkhasiat/bermanfaat, bermutu, dan terjangkau. Sementara Pasal 111 ayat (3) mengatur bahwa setiap makanan dan minuman yang dikemas harus diberi tanda atau label yang menginformasikan berbagai aspek termasuk tanggal kadaluwarsa.
+
+Di sisi lain, Pasal 1 ayat (1) UU Jaminan Produk Halal mendefinisikan produk dengan cakupan yang lebih luas, tidak hanya meliputi makanan dan minuman tetapi juga obat, kosmetik, dan produk lain yang dimanfaatkan oleh masyarakat. Pasal 4 UU yang sama mengharuskan bahwa semua produk yang masuk, beredar, dan diperdagangkan di Indonesia harus bersertifikat halal.
+
+Potensi konflik muncul karena UU Kesehatan tidak menyebutkan kewajiban sertifikasi halal secara eksplisit dalam persyaratan labeling atau kualitas produk kesehatan, sementara UU Jaminan Produk Halal jelas-jelas menetapkan kewajiban tersebut. Hal ini dapat menyebabkan kebingungan dalam implementasi terutama bagi produsen obat dan alat kesehatan yang perlu memperhatikan sertifikasi halal selain dari aspek keamanan, kualitas, dan keterjangkauan.
+
+Untuk mengatasi disharmoni ini, perlu ada penegasan dan harmonisasi antara kedua undang-undang. Pemerintah dapat mempertimbangkan untuk mengeluarkan pedoman atau regulasi tambahan yang menjelaskan hubungan antara persyaratan sebagaimana diatur dalam UU Kesehatan dan UU Jaminan Produk Halal, sehingga produsen farmasi dan alat kesehatan memahami dengan jelas kewajiban mereka dalam memenuhi kedua persyaratan hukum tersebut.
+
+Similarity Score: 0.9672
+Precision: 0.2565
+Recall: 0.7024
+F1 Score: 0.3758
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc8 - Penyandang Disabilitas
+Ground Truth Disharmony:
+Ketentuan Pasal 139 UU Kesehatan memiliki perbedaan terminologi/istilah penyandang disabilitas dengan Pasal 1 angka 1 UU Penyandang Disabilitas, dimana dalam UU Kesehatan tersebut masih menggunakan istilah penyandang cacat dan bukan penyandang disabilitas sebagaimana diatur dalam UU Penyandang Disabilitas. Hal ini tentu saja akan menimbulkan permasalahan kedepannya sehingga penyebutan penyandang cacat dalam UU Kesehatan haruslah direvisi menjadi Penyandang Disabilitas.
+
+GPT Output:
+Potensi disharmoni muncul antara Pasal 139 UU Kesehatan dengan ketentuan Pasal 1 angka 1 UU Penyandang Disabilitas. UU Kesehatan menggunakan istilah "penyandang cacat" sementara UU Penyandang Disabilitas menggunakan istilah "Penyandang Disabilitas." Meskipun secara konseptual kedua istilah tersebut merujuk pada individu dengan kebutuhan khusus yang mengalami keterbatasan fisik, intelektual, mental, dan/atau sensorik, perbedaan istilah ini dapat menimbulkan kebingungan dalam implementasi kebijakan dan regulasi terkait kesehatan serta pelayanan untuk kelompok yang sama.
+
+Perbedaan terminologi dapat menyebabkan masalah dalam koherensi kebijakan, terutama ketika kedua undang-undang menetapkan kewajiban pemerintah terkait dukungan terhadap individu dengan disabilitas. UU Kesehatan menekankan pada upaya pemeliharaan kesehatan untuk tetap hidup sehat dan produktif secara sosial dan ekonomis, sedangkan UU Penyandang Disabilitas menekankan pada kesetaraan hak dan partisipasi penuh di masyarakat.
+
+Untuk mengatasi disharmoni ini, disarankan agar terminology dalam Pasal 139 UU Kesehatan disesuaikan dengan UU Penyandang Disabilitas. Dengan mengadopsi istilah "Penyandang Disabilitas" pada UU Kesehatan, akan tercipta keselarasan terminologis yang pada gilirannya dapat meningkatkan klaritas dan kesinambungan kebijakan serta peraturan terkait penyandang disabilitas di Indonesia.
+
+Similarity Score: 0.9716
+Precision: 0.2169
+Recall: 0.6207
+F1 Score: 0.3214
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc9 - Kesehatan Jiwa
+Ground Truth Disharmony:
+Ketentuan Pasal 144 ayat (2) UU Kesehatan dengan Pasal 1 angka 2 dan angka 3 serta Pasal 3 huruf UU Kesehatan Jiwa terdapat disharmoni terkait perbedaan terminologi penderita gangguan kesehatan jiwa antara UU Kesehatan dan UU Kesehatan Jiwa. UU Kesehatan menyebutnya dengan pasien gangguan jiwa dan masalah psikososial sedangkan UU Kesehatan Jiwa menyebutnya dengan Orang Dengan Masalah Kejiwaan (ODMK) dan Orang Dengan Gangguan Kejiwaan (ODGJ). Perbedaan definisi tersebut tentunya akan berimplikasi pada perbedaan perlakuan dan cara penanganan permasalahan tersebut sebab terdapat perbedaan perspektif dari pemangku kepentingan yaitu pemerintah dalam hal menyikapi permasalahan tersebut. Lebih lanjut, ketentuan dalam UU Kesehatan harus disesuaikan dengan definisi dari UU Kesehatan Jiwa.
+
+GPT Output:
+Berdasarkan ketentuan yang diberikan, terdapat potensi disharmoni terminologi dan penerapan antara Pasal 144 ayat (2) Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan (UU Kesehatan) dan Undang-Undang Nomor 18 Tahun 2014 tentang Kesehatan Jiwa (UU Kesehatan Jiwa). Pasal 144 ayat (2) UU Kesehatan menyebutkan upaya kesehatan jiwa mencakup upaya preventif, promotif, kuratif, dan rehabilitatif bagi pasien gangguan jiwa dan masalah psikososial. Sementara itu, UU Kesehatan Jiwa mengategorikan Orang Dengan Masalah Kejiwaan (ODMK) dan Orang Dengan Gangguan Jiwa (ODGJ), serta menetapkan bahwa pelayanan kesehatan bagi ODMK dan ODGJ dilakukan secara terintegrasi, komprehensif, dan berkesinambungan, yang juga mencakup upaya promotif, preventif, kuratif, dan rehabilitatif.
+
+Disharmoni yang muncul adalah terkait pemahaman dan terminologi yang mungkin menimbulkan kebingungan dalam implementasi kebijakan kesehatan jiwa. Dalam UU Kesehatan, kategori masalah psikososial tidak dirinci dengan terminologi yang digunakan dalam UU Kesehatan Jiwa, yaitu ODMK dan ODGJ, sehingga bisa menimbulkan multitafsir dalam pemahaman dan pengaplikasian kebijakan kesehatan jiwa. 
+
+Untuk menyelesaikan disharmoni ini, disarankan agar Pasal 144 ayat (2) UU Kesehatan direvisi untuk memasukkan definisi yang konsisten dengan ketentuan dalam UU Kesehatan Jiwa terkait ODMK dan ODGJ. Hal ini akan memastikan bahwa kebijakan dan praktik di lapangan konsisten dan tidak membingungkan bagi penyedia layanan maupun penerima layanan kesehatan jiwa.
+
+Similarity Score: 0.9619
+Precision: 0.3015
+Recall: 0.5607
+F1 Score: 0.3922
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc10 - Kesehatan Lingkungan
+Ground Truth Disharmony:
+Berdasarkan ketentuan di atas terdapat potensi disharmoni antara pengaturan PP Kesehatan Lingkungan dengan UU Kesehatan. Hal ini dikarenakan UU Kesehatan mengatur secara tegas bahwa limbah baik cair, padat, maupun gas adalah unsur-unsur yang dapat menimbulkan gangguan kesehatan. Namun dalam PP Kesehatan lingkungan sebagaimana ketentuan dalam Pasal 39 ayat (2) tidak mengatur tentang limbah sebagai salah satu dari unsur yang dapat menimbulkan gangguan kesehatan. Hal ini tentunya dapat menimbulkan potensi disharmoni dan multitafsir dalam pelaksanaannya mengingat PP Kesehatan lingkungan ini merupakan peraturan pelaksanaan dari Pasal 163 UU Kesehatan.
+
+GPT Output:
+Berdasarkan ketentuan yang diberikan, terdapat potensi disharmonisasi antara Pasal 163 ayat (3) UU Kesehatan dan Pasal 39 ayat (2) PP Kesehatan Lingkungan. UU Kesehatan mengidentifikasi unsur-unsur yang menimbulkan gangguan kesehatan secara lebih luas dibandingkan dengan PP Kesehatan Lingkungan. Ada sejumlah unsur yang disebutkan dalam UU Kesehatan, seperti limbah cair, limbah padat, limbah gas, binatang pembawa penyakit, kebisingan, air dan udara yang tercemar, serta makanan yang terkontaminasi, yang tidak muncul dalam PP Kesehatan Lingkungan. Sebaliknya, PP Kesehatan Lingkungan mengidentifikasi "pestisida" sebagai unsur gangguan kesehatan, yang tidak disebutkan secara spesifik dalam UU Kesehatan.
+
+Ketidaksesuaian dalam pengenalan unsur-unsur yang menimbulkan gangguan kesehatan dalam kedua dokumen ini dapat menyebabkan kebingungan dalam penerapan dan penegakan hukum terkait kesehatan lingkungan, terutama dalam pengaturan standar, pelaksanaan, dan evaluasi kebijakan kesehatan lingkungan.
+
+Agar terjadi harmonisasi, disarankan agar peraturan-peraturan ini diselaraskan. Hal ini bisa dilakukan dengan meninjau dan memperbarui peraturan perundang-undangan untuk memastikan bahwa semua unsur yang relevan dimasukkan dan dijelaskan dengan jelas. Dengan demikian, baik UU Kesehatan maupun PP Kesehatan Lingkungan harus menyajikan daftar unsur gangguan kesehatan yang konsisten dan mencakup semua ancaman potensial yang relevan. Langkah ini akan membantu memastikan bahwa upaya untuk menjaga kesehatan lingkungan dilaksanakan secara komprehensif dan efektif.
+
+Similarity Score: 0.9612
+Precision: 0.2835
+Recall: 0.6322
+F1 Score: 0.3915
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc11 - Kesehatan Kerja
+Ground Truth Disharmony:
+Pasal 166 ayat (1) UU Kesehatan menyatakan bahwa “Majikan atau pengusaha wajib menjamin kesehatan pekerja melalui upaya pencegahan, peningkatan, pengobatan dan pemulihan serta wajib menanggung seluruh biaya pemeliharaan kesehatan pekerja.” Ketentuan dari Pasal tersebut tidak sesuai dengan ketentuan Pasal 22 ayat (2) Undang-Undang Nomor 40 Tahun 2004 tentang Sistem Jaminan Sosial Nasional (UU SJSN) yang menyatakan bahwa “Untuk jenis pelayanan yang dapat menimbulkan penyalahgunaan pelayanan, peserta dikenakan urun biaya.” Selain itu Pasal 166 ayat (1) tersebut juga bertentangan dengan Pasal 27 ayat (1) UU SJSN yang menyatakan “Besarnya iuran jaminan kesehatan untuk peserta penerima upah ditentukan berdasarkan persentase dari upah sampai batas tertentu, yang secara bertahap ditanggung bersama oleh pekerja dan pemberi kerja.” Potensi disharmoni juga mungkin terjadi akibat pemberlakuan Pasal 166 ayat (2) UU Kesehatan dan Pasal 17 ayat (2) UU SJSN. UU Kesehatan menentukan bahwa majikan/pengusaha yang menanggung biaya atas gangguan kesehatan akibat kerja yang diderita oleh pekerja, yakni biaya tersebut dapat ditafsirkan iuran pekerja sebagai peserta jaminan sosial. Sedangkan dalam Pasal 17 ayat (2) UU SJSN, pekerja juga turut membayar iuran tersebut.
+
+GPT Output:
+Berdasarkan ketentuan dari berbagai pasal di atas, terdapat potensi disharmoni antara UU Kesehatan dan UU Sistem Jaminan Sosial Nasional (SJSN). 
+
+Pasal 166 ayat (1) UU Kesehatan mewajibkan majikan atau pengusaha untuk menjamin kesehatan pekerja, yang meliputi pencegahan, peningkatan, pengobatan, dan pemulihan, serta menanggung seluruh biaya pemeliharaan kesehatan pekerja. Hal ini memberikan tanggung jawab penuh kepada majikan terhadap seluruh biaya yang berkaitan dengan pemeliharaan kesehatan pekerja.
+
+Sebaliknya, Pasal 17 ayat (2) dan Pasal 22 ayat (2) UU SJSN menetapkan bahwa dalam hal terdapat pelayanan yang berpotensi menimbulkan penyalahgunaan, peserta dikenai urun biaya, yaitu pembagian biaya antara peserta dan program jaminan sosial. Selanjutnya, Pasal 27 ayat (1) UU SJSN mengatur bahwa iuran jaminan kesehatan untuk peserta penerima upah ditentukan berdasarkan persentase dari upah yang ditanggung bersama oleh pekerja dan pemberi kerja.
+
+Ketidakkonsistenan muncul dari ketentuan yang mewajibkan pengusaha menanggung seluruh biaya kesehatan dalam UU Kesehatan, sementara UU SJSN memungkinkan pembagian biaya yang melibatkan pekerja. Hal ini dapat menimbulkan kebingungan dalam implementasi, terutama ketika menentukan pihak yang bertanggung jawab terhadap biaya kesehatan yang ditanggung serta bagaimana mekanisme urun biaya diaplikasikan.
+
+Untuk mengatasi disharmoni ini, perlu dilakukan harmonisasi antara kedua undang-undang tersebut dengan memperjelas mahasiswa dan batasan masing-masing tanggung jawab dalam pemenuhan biaya kesehatan pekerja. Salah satu solusi adalah dengan memperjelas ketentuan urun biaya dan mengatur sedemikian rupa agar tidak bertentangan dengan kewajiban pemberi kerja dalam UU Kesehatan. Lebih lanjut, perlu ada penjelasan yang lebih terperinci mengenai situasi tertentu di mana urun biaya dapat diterapkan, agar kepentingan pekerja dilindungi tanpa mengabaikan tanggung jawab pengusaha sebagaimana diatur dalam UU Kesehatan.
+
+Similarity Score: 0.9617
+Precision: 0.3922
+Recall: 0.5714
+F1 Score: 0.4651
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc12 - Frasa “Dapat” dalam Hal Pengangkatan Tenaga Pengawa
+Ground Truth Disharmony:
+Frasa “dapat” dalam Pasal tersebut mengakibatkan belum adanya komitmen dari Menteri atau Kepala Dinas untuk mengangkat tenaga pengawas. Padahal peran tenaga pengawas sangat penting dalam hal melakukan pengawasan di bidang kesehatan, sehingga frasa “dapat” tersebut haruslah ditinjau kembali. Frasa “dapat” harus di sebutkan “wajib” sehingga fungsi pengawasan melalui tenaga pengawas itu dapat menjalankan tupoksinya dengan baik sesuai amanat UU Kesehatan.
+
+GPT Output:
+Berdasarkan ketentuan Pasal 183 UU Kesehatan, Menteri atau kepala dinas memiliki kewenangan untuk mengangkat tenaga pengawas yang bertugas mengawasi sumber daya dan upaya di bidang kesehatan. Potensi disharmoni dapat muncul apabila tidak ada ketentuan lebih lanjut mengenai kriteria, wewenang, cakupan pengawasan, serta mekanisme pertanggungjawaban dari tenaga pengawas ini. Ketiadaan perincian yang jelas dapat menimbulkan multitafsir serta ketidakpastian dalam pelaksanaan tugas pengawasan.
+
+Lebih lanjut, ketentuan ini perlu mempertimbangkan harmonisasi dengan peraturan lain yang mengatur pengawasan di sektor kesehatan, termasuk tugas dan fungsi lembaga pengawasan yang sudah ada. Selain itu, perlu ada pengaturan lebih rinci terkait dengan koordinasi antara tenaga pengawas dengan instansi terkait lainnya, termasuk pembatasan wewenang agar tidak terjadi tumpang tindih fungsi dengan pengawas yang mungkin diangkat oleh badan atau lembaga lain di sektor kesehatan.
+
+Oleh karena itu, disarankan untuk merumuskan peraturan pelaksana yang lebih spesifik mengenai kualifikasi, tugas, wewenang, dan tanggung jawab dari tenaga pengawas yang diangkat serta mekanisme pelaksanaannya agar pengawasan dapat berjalan efektif dan tidak mengganggu keterpaduan sistem pengawasan yang sudah berjalan.
+
+Similarity Score: 0.9129
+Precision: 0.1515
+Recall: 0.4167
+F1 Score: 0.2222
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc13 - Ketentuan Pidana
+Ground Truth Disharmony:
+Terkait ketentuan pidana, Pasal 190 ayat (1) dan Pasal 191 UU Kesehatan juga berpotensi bermasalah. Pasal 190 ayat (1) berpotensi tumpang tindih dengan Pasal 78 Undang-Undang Nomor 29 Tahun 2004 tentang Praktik Kedokteran (UU Praktik Kedokteran). Dalam Pasal 190 ayat (1) UU Kesehatan tersebut terkait kegawatdaruratan petugas kesehatan wajib memberikan pertolongan pada pasien gawat darurat. Kondisi di lapangan pada beberapa fasilitas pelayanan kesehatan (fasyankes) tidak terdapat tenaga dokter, sehingga mengharuskan pertolongan pada kondisi gawat darurat dilakukan oleh tenaga kesehatan lainnya. Pada beberapa tempat petugas kesehatan ini tidak disiapkan pendelegasian yang jelas oleh dokter penanggung jawab. Jika dikaitkan dengan aturan pada Pasal 78 UU Praktik Kedokteran ini menyebabkan petugas kesehatan selain dokter yang ditugaskan di fasyankes daerah terpencil yang tidak ada dokter menjadi dilema. Di satu sisi jika tidak memberikan pertolongan pada kasus pasien gawat darurat dapat dituntut melanggar Pasal 190 ayat (1) UU Kesehatan, sedangkan jika melakukan tindakan gawat darurat tanpa pendelegasian dapat dituntut melanggar pasal 78 UU Praktik Kedokteran. Sehingga ke depannya, harus diperjelas apa kriteria darurat dalam Pasal 190 ayat (1) UU Kesehatan, yang dalam praktiknya dapat ditafsirkan berbeda oleh pasien dan penegak hukum sehingga perlu standar nasional atau minimal Standard Operating Procedure (SOP) di setiap fasilitas kesehatan yang harus didaftarkan rutin ke dinas kesehatan setempat sebagai bukti.
+
+GPT Output:
+Berdasarkan ketentuan yang diberikan, ditemukan potensi disharmoni dalam pengaturan sanksi pidana antara berbagai pasal dalam Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan dan Undang-Undang Nomor 29 Tahun 2004 tentang Praktik Kedokteran. Pasal 190 ayat (1) UU Kesehatan menetapkan sanksi pidana penjara paling lama 2 tahun dan denda paling banyak Rp200.000.000,00 untuk pimpinan fasilitas pelayanan kesehatan atau tenaga kesehatan yang dengan sengaja tidak memberikan pertolongan pertama pada pasien gawat darurat. Di sisi lain, Pasal 191 UU Kesehatan mengatur sanksi lebih ringan, yaitu pidana penjara paling lama 1 tahun dan denda paling banyak Rp100.000.000,00 bagi setiap orang yang melakukan praktik pelayanan kesehatan tradisional tanpa izin yang menyebabkan kerugian harta benda, luka berat, atau kematian. Sementara itu, Pasal 78 UU Praktik Kedokteran menetapkan sanksi pidana penjara paling lama 5 tahun atau denda paling banyak Rp150.000.000,00 bagi setiap orang yang berpura-pura sebagai dokter atau dokter gigi dengan menggunakan alat atau metode yang menyesatkan.
+
+Disharmoni muncul karena adanya ketidaksesuaian antara bobot pelanggaran dengan sanksi yang diterapkan. Pelanggaran yang digambarkan dalam Pasal 191 UU Kesehatan, yang dapat mengakibatkan kematian, hanya dikenakan sanksi lebih ringan dibandingkan pelanggaran dalam Pasal 78 UU Praktik Kedokteran yang sifatnya menyesatkan tanpa ada akibat fisik yang langsung. Ini menimbulkan ketidakpastian dan ketidakadilan dalam penerapan hukum, sebab kasus yang lebih berat mendapatkan sanksi lebih ringan.
+
+Sebagai solusi, perlu dilakukan harmonisasi sanksi dalam regulasi tersebut dengan meninjau kembali besaran dan konsistensi pidana agar sesuai dengan beratnya pelanggaran. Peninjauan ini juga harus mengkaji implikasi dari masing-masing pelanggaran terutama dalam konteks dampak terhadap kesehatan dan keselamatan pasien. Penyesuaian ini akan memastikan adanya keselarasan dalam norma regulasi dan penerapan hukum yang lebih adil dan efektif.
+
+Similarity Score: 0.9135
+Precision: 0.3060
+Recall: 0.3905
+F1 Score: 0.3431
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
+--------------------------------------------------
+Test Case: tc14 - Pendirian Unit Transfusi Darah
+Ground Truth Disharmony:
+Pasal 87 ayat (1) dan (2) UU Kesehatan menyatakan “penyelenggaraan donor darah dan pengelolaan darah dilakukan oleh Unit Transfusi Darah”. Dan dalam ayat (2) menyatakan bahwa “Unit Transfusi Darah sebagaimana dimaksud pada ayat (1) dapat diselenggarakan oleh Pemerintah, pemerintah daerah, dan/atau organisasi sosial yang tugas pokok dan fungsinya di bidang kepalangmerahan”. Sehingga dapat disimpulkan bahwa berdasarkan UU Kesehatan penyelenggaraan UTD dapat dilaksanakan lebih dari satu penyelenggara. Lebih lanjut apabila kita melihat pengaturan dalam PP Pelayanan Darah Pasal 34 ayat (1) menyatakan “UTD dapat diselenggarakan oleh Pemerintah, pemerintah daerah, atau organisasi yang tugas pokok dan fungsinya di bidang kepalangmerahan”. Dan pada Permenkes Nomor 83 Tahun 2014 tentang Unit Transfusi Darah, Bank Darah Rumah Sakit, dan Jejaring Pelayanan Transfusi Darah (Permenkes Pelayanan Darah) pada Pasal 2 ayat (1) menyatakan “UTD hanya diselenggarakan oleh Pemerintah, Pemerintah Daerah, atau PMI”. Berdasarkan uraian ketentuan di atas, terdapat inkonsistensi antara UU Kesehatan yang menggunakan frasa “dan/atau” dengan PP Pelayanan Darah dan Permenkes Pelayanan Darah yang hanya menggunakan frasa “atau”. Akibat dari adanya inkonsistensi norma di atas, menimbulkan beberapa permasalahan yaitu berkembangnya pendirian UTD PMI dalam suatu daerah yang sebelumnya sudah berdiri satu UTD PMI, bahwa menurut PMI hal ini tidak diperlukan lagi pendirian UTD lainnya diwilayah yang sama, seperti yang saat ini berkembang yakni UTD yang tersebar ada di beberapa rumah sakit. PMI menyatakan yang tepat untuk pengelolaan darah adalah bank darah sesuai ketentuan peraturan perundang-undangan. Bahwa hal ini dapat mempengaruhi kualitas pelayanan darah karena hingga saat ini belum terdapat pengawasan dan pembinaan terhadap UTD rumah sakit.
+
+GPT Output:
+Dalam analisis terhadap ketentuan peraturan yang telah disampaikan, ditemukan potensi disharmoni terkait pengaturan pihak yang dapat menyelenggarakan Unit Transfusi Darah (UTD). 
+
+Pertama, Pasal 87 ayat (2) Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan menyatakan bahwa UTD dapat diselenggarakan oleh Pemerintah, pemerintah daerah, dan/atau organisasi sosial yang tugas pokok dan fungsinya di bidang kepalangmerahan. Frasa "dan/atau" menunjukkan fleksibilitas dalam menyelenggarakan UTD oleh lebih dari satu jenis pihak secara bersamaan atau terpisah.
+
+Kedua, Peraturan Pemerintah Nomor 7 Tahun 2011 tentang Pelayanan Darah dalam Pasal 34 ayat (1) menggunakan frasa "atau", sehingga mengindikasikan bahwa UTD hanya dapat diselenggarakan oleh salah satu pihak dari Pemerintah, pemerintah daerah, atau organisasi sosial. Ini menciptakan peluang inkonsistensi dengan ketentuan di dalam UU Kesehatan yang memungkinkan lebih dari satu kombinasi penyelenggara.
+
+Ketiga, Peraturan Menteri Kesehatan Nomor 83 Tahun 2014 di Pasal 2 ayat (1) membatasi pihak yang dapat menyelenggarakan UTD hanya kepada Pemerintah, Pemerintah Daerah, atau PMI (Palang Merah Indonesia), yang mempersempit cakupan pihak penyelenggara dibandingkan dengan ketentuan dalam UU Kesehatan dan PP Pelayanan Darah.
+
+Implikasi dari ketidakkonsistenan ini dapat menyebabkan kebingungan dalam pelaksanaan pendirian dan operasional UTD di lapangan, terutama mengenai siapa pihak yang sah atau berwenang untuk menyelenggarakan UTD berdasarkan ketentuan hukum yang berlaku.
+
+Untuk menyelesaikan disharmoni ini, disarankan revisi harmonisasi regulasi, baik melalui perubahan peraturan pelaksanaan atau undang-undang yang lebih tinggi, seperti:
+1. Menentukan dengan tegas pihak mana saja yang berhak menyelenggarakan UTD, apakah dapat bersama-sama, dan lingkup keterlibatan masing-masing pihak.
+2. Menyeragamkan nomenklatur dalam setiap dokumen regulasi agar mencerminkan satu kebijakan yang konsisten.
+3. Jika perlu, menguatkan mandat pengaturan lebih lanjut dalam peraturan yang lebih rinci atau dalam bentuk pedoman teknis dari Kementerian Kesehatan untuk memastikan kejelasan dan keberlanjutan operasional UTD. 
+
+Langkah-langkah tersebut diharapkan dapat menyelaraskan dan memperjelas pengaturan terkait penyelenggaraan Unit Transfusi Darah agar tidak terjadi penafsiran yang berbeda di tingkat implementasi.
+
+Similarity Score: 0.9567
+Precision: 0.4080
+Recall: 0.4861
+F1 Score: 0.4436
+
+GPT response semantically matches expected output.
+--------------------------------------------------
+
