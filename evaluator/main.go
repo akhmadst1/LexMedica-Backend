@@ -159,34 +159,39 @@ func BatchEvaluate(testCaseFile string, filename string) error {
 		// for _, reg := range testCase.Regulations {
 		// 	fullRegulationText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
 		// }
+
+		// ** --------- No COSTAR ----------
+		// var promptBuilder strings.Builder
+		// promptBuilder.WriteString("Answer in Indonesian, identify the disharmony between the following law regulations.\n")
+		// promptBuilder.WriteString("Input Regulations:\n")
+		// promptBuilder.WriteString(fullRegulationText)
+		// gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(promptBuilder.String())
+
+		// ** --------- COSTAR -----------
 		// gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(pkg.CostarPromptZeroShot(fullRegulationText))
 
-		// -------------------- FEW SHOT --------------------
+		// ** -------------------- FEW SHOT --------------------
 		// var promptBuilder strings.Builder
 		// promptBuilder.WriteString(pkg.CostarHeader)
 		// promptBuilder.WriteString("\n\nBelow are some examples:")
-
 		// // Add other test cases as few-shot examples (excluding current)
 		// for j, ex := range testCases {
 		// 	if i == j {
 		// 		continue
 		// 	}
-
 		// 	var exampleText strings.Builder
 		// 	for _, reg := range ex.Regulations {
-		// 		exampleText.WriteString(fmt.Sprintf("Dokumen: %s\nPasal: %s\nIsi: %s\n\n", reg.Document, reg.Article, reg.Content))
+		// 		exampleText.WriteString(fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content))
 		// 	}
-
 		// 	promptBuilder.WriteString(fmt.Sprintf(
 		// 		"\nInput Regulations:\n%sExpected Disharmony:\n%s\n\n---\n",
 		// 		exampleText.String(), ex.Disharmony,
 		// 	))
 		// }
-
 		// // Add the current test case (as the new input, without disharmony)
 		// var currentRegText strings.Builder
 		// for _, reg := range testCase.Regulations {
-		// 	currentRegText.WriteString(fmt.Sprintf("Dokumen: %s\nPasal: %s\nIsi: %s\n\n", reg.Document, reg.Article, reg.Content))
+		// 	currentRegText.WriteString(fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content))
 		// }
 		// promptBuilder.WriteString("\nNow, analyze the following:\n")
 		// promptBuilder.WriteString("Input Regulations:\n")
@@ -194,61 +199,66 @@ func BatchEvaluate(testCaseFile string, filename string) error {
 		// promptBuilder.WriteString("End of input.\n")
 		// gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(promptBuilder.String())
 
-		// ----------------------- CHAIN OF THOUGHT -------------------
+		// ** ----------------------- CHAIN OF THOUGHT -------------------
 		// var fullRegulationText string
 		// for _, reg := range testCase.Regulations {
 		// 	fullRegulationText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
 		// }
 		// gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(pkg.CostarPromptChainOfThought(fullRegulationText))
 
-		// ----------------------- FEW SHOT + CHAIN OF THOUGHT -------------------
-		// ----------------------- FEW SHOT + CHAIN OF THOUGHT -------------------
+		// ** ----------------------- FEW SHOT + CHAIN OF THOUGHT -------------------
 		var promptBuilder strings.Builder
 		promptBuilder.WriteString(pkg.CostarHeader)
-
 		promptBuilder.WriteString(`
+		Now, analyze the following step by step of reasoning:
+		1. Identify the main legal norms, obligations, or permissions from each regulation, including relevant articles or clauses.
+		2. Compare these legal norms side by side in terms of:
+		   - Definition or terminology
+		   - Legal scope and applicability
+		   - Authority/responsibility assigned
+		   - Exceptions or special conditions
+		3. Analyze potential disharmony:
+		   - Is there a direct contradiction?
+		   - Is there overlapping jurisdiction or authority?
+		   - Are there ambiguities that can lead to multiple interpretations?
+		4. Conclude with a summary of your findings:
+		   - Clearly state if disharmony exists or not.
+		   - If disharmony exists, briefly explain the legal or practical implication.
+		5. Recommend possible resolutions if appropriate:
+		   - Suggest harmonization steps (e.g., revision, repeal, new regulation, clarification).
+		   - Mention which regulation may take precedence (if applicable).
 
-Instructions:
-Please follow a step-by-step reasoning process to analyze the input regulations. Begin by identifying each regulation’s main legal point. Then compare them one by one to uncover any conflict, overlap, or ambiguity. Conclude by summarizing the legal disharmony and optionally propose a resolution.
-
-Steps:
-1. Identify key legal obligations or permissions in each regulation.
-2. Compare similarities and differences in meaning, scope, and exceptions.
-3. Detect any conflict, inconsistency, or ambiguity.
-4. Provide a reasoned conclusion and suggest clarification if necessary.
-
-Below are some examples:
-`)
-
+		Important Notes:
+		1. Be neutral and objective.
+		2. Not all case will have disharmony, so if you find no disharmony, please state that clearly.
+		3. Provide your analysis in Indonesian, plain text, in paragraph, without numbering, bullets, or any other formatting.
+		`)
 		// Add other test cases as few-shot examples (excluding current)
+		promptBuilder.WriteString("\n\nBelow are some examples:")
 		for _, ex := range testCases {
 			if ex.ID == testCase.ID {
 				continue
 			}
-
 			var exampleText strings.Builder
 			for _, reg := range ex.Regulations {
-				exampleText.WriteString(fmt.Sprintf("Dokumen: %s\nPasal: %s\nIsi: %s\n\n", reg.Document, reg.Article, reg.Content))
+				exampleText.WriteString(fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content))
 			}
-
 			promptBuilder.WriteString(fmt.Sprintf(
 				"\nInput Regulations:\n%sExpected Disharmony:\n%s\n\n---\n",
 				exampleText.String(), ex.Disharmony,
 			))
 		}
-
-		// Add the current test case for analysis
+		// Add the current regulations for analysis
 		var currentRegText strings.Builder
 		for _, reg := range testCase.Regulations {
-			currentRegText.WriteString(fmt.Sprintf("Dokumen: %s\nPasal: %s\nIsi: %s\n\n", reg.Document, reg.Article, reg.Content))
+			currentRegText.WriteString(fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content))
 		}
-		promptBuilder.WriteString("\nNow, analyze the following:\n")
-		promptBuilder.WriteString("Input Regulations:\n")
+		promptBuilder.WriteString("\nNow, analyze the regulations input below:\n")
 		promptBuilder.WriteString(currentRegText.String())
 		promptBuilder.WriteString("End of input.\n")
-
 		gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(promptBuilder.String())
 
+		// ------------------------ END OF PROMPT ------------------------
 		if err != nil {
 			msg := fmt.Sprintf("Error generating output for test case %s: %v\n", testCase.ID, err)
 			fmt.Print(msg)
@@ -308,11 +318,11 @@ func main() {
 	}
 
 	// Default output filename
-	outputFile := "../data/default-name-result.txt"
+	outputFile := "../result/default-name-result.txt"
 
 	// Check for command-line argument
 	if len(os.Args) > 1 {
-		outputFile = "../data/" + os.Args[1] + ".txt"
+		outputFile = "../result/" + os.Args[1] + ".txt"
 	}
 
 	// Run the batch evaluation

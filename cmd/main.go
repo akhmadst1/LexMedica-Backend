@@ -24,8 +24,8 @@ func main() {
 	// Initialize Router
 	r := gin.Default()
 
-	// Serve static files for the documents
-	r.Static("/docs", "./docs")
+	// Serve static files for test cases few shot examples
+	r.Static("/data", "./data")
 
 	// ** Add CORS Middleware **
 	r.Use(cors.New(cors.Config{

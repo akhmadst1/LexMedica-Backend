@@ -13,7 +13,7 @@ import (
 )
 
 func StreamOpenAIDisharmonyAnalysis(regulations string, w http.ResponseWriter) error {
-	prompt := pkg.CostarPromptFewShot(regulations)
+	prompt := pkg.CostarPromptFewShotChainOfThought(regulations)
 	openaiKey := os.Getenv("OPENAI_API_KEY")
 	openaiUrl := "https://api.openai.com/v1/chat/completions"
 	modelName := "gpt-4o"
