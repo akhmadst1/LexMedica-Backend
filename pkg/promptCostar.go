@@ -15,6 +15,7 @@ type TestCase struct {
 	ID          string       `json:"id"`
 	Title       string       `json:"title"`
 	Regulations []Regulation `json:"regulations"`
+	Reason      string       `json:"reason"`
 	Disharmony  string       `json:"disharmony"`
 }
 

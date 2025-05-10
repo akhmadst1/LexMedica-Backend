@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/akhmadst1/tugas-akhir-backend/internal/handlers"
-	"github.com/akhmadst1/tugas-akhir-backend/pkg"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -16,10 +15,6 @@ func main() {
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
 	}
-
-	// Connect to Database
-	db := pkg.ConnectDB()
-	defer db.Close()
 
 	// Initialize Router
 	r := gin.Default()
@@ -38,41 +33,8 @@ func main() {
 	}))
 
 	// ** API Routes **
-	// Auth
-	r.POST("/auth/register", handlers.RegisterUser(db))
-	r.POST("/auth/resend_email_verification", handlers.ResendEmailVerification(db))
-	r.GET("/auth/verify_email/:token", handlers.VerifyEmailUser(db))
-	r.POST("/auth/login", handlers.LoginUser(db))
-	r.POST("/auth/refresh_token", handlers.RefreshToken(db))
-
-	// QnA and Analysis
-	r.POST("/chat/qna", handlers.QnAResponse)
-	r.POST("/chat/analyze", handlers.DisharmonyAnalysis)
-
-	// History routes require authentication
-	history := r.Group("/history", pkg.AuthMiddleware())
-	{
-		history.POST("/session", handlers.CreateChatSession(db))
-		history.GET("/session/:user_id", handlers.GetChatSessions(db))
-		history.DELETE("/session/:session_id", handlers.DeleteChatSession(db))
-
-		history.POST("/message", handlers.AddChatMessage(db))
-		history.GET("/message/:session_id", handlers.GetChatMessages(db))
-		history.DELETE("/message/:message_id", handlers.DeleteMessage(db))
-	}
-
-	// Documents routes require authentication
-	docs := r.Group("/document", pkg.AuthMiddleware())
-	{
-		docs.POST("", handlers.CreateDocument(db))
-		docs.GET("", handlers.GetAllDocuments(db))
-		docs.GET("/:id", handlers.GetDocumentByID(db))
-		docs.PUT("/:id", handlers.UpdateDocument(db))
-		docs.DELETE("/:id", handlers.DeleteDocument(db))
-		docs.GET("/view/:id", handlers.ViewDocument(db))
-	}
+	r.POST("/api/chat/analyze", handlers.DisharmonyAnalysis)
 
 	// Start Server
-	log.Println("Web App Backend running on port 8080...")
 	r.Run(":8080")
 }

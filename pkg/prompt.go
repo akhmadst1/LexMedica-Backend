@@ -26,7 +26,7 @@ func FewShot(regulations string) string {
 			exRegText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
 		}
 		fewShotPromptBuilder.WriteString(fmt.Sprintf(
-			"\nInput Regulations:\n%s\nExpected Potential Disharmony Analysis:\n%s\n\n---\n", exRegText, ex.Disharmony))
+			"\nInput Regulations:\n%s\nExpected Potential Disharmony Analysis Output:\n%s\n\n---\n", exRegText, ex.Disharmony))
 	}
 	fewShotPromptBuilder.WriteString("\nEnd of examples.\n\n")
 
@@ -106,7 +106,7 @@ func FewShotChainOfThought(regulations string) string {
 			exRegText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
 		}
 		fewShotCotPromptBuilder.WriteString(fmt.Sprintf(
-			"\nInput Regulations:\n%s\nExpected Disharmony:\n%s\n\n---\n", exRegText, ex.Disharmony))
+			"\nInput Regulations:\n%s\nReasoning:\n%s\nExpected Potential Disharmony Analysis Output:\n%s\n\n---\n", exRegText, ex.Reason, ex.Disharmony))
 	}
 
 	fewShotCotPromptBuilder.WriteString("Now, analyze the regulations input below:\n")

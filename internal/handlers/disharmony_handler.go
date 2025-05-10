@@ -27,11 +27,6 @@ func DisharmonyAnalysis(c *gin.Context) {
 		flusher.Flush()
 	}
 
-	// Start streaming
-	// Llama Model
-	// if err := services.StreamLlamaAnswer(req.Question, c.Writer); err != nil {
-	// 	c.String(http.StatusInternalServerError, "Streaming error: %v", err)
-	// }
 	// OpenAI Model
 	if err := services.StreamOpenAIDisharmonyAnalysis(req.Regulations, c.Writer); err != nil {
 		c.String(http.StatusInternalServerError, "Streaming error: %v", err)
