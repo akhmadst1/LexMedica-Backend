@@ -11,10 +11,10 @@ import (
 )
 
 func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) error {
-	prompt := pkg.ZeroShot(regulations)
+	prompt := pkg.FewShot(regulations)
 	openaiKey := os.Getenv("OPENAI_API_KEY")
 	openaiUrl := "https://api.openai.com/v1/chat/completions"
-	modelName := "gpt-4o"
+	modelName := "gpt-4o-mini"
 
 	// Prepare JSON payload
 	payload := map[string]interface{}{

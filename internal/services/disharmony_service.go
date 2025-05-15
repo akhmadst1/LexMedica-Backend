@@ -16,7 +16,7 @@ func StreamOpenAIDisharmonyAnalysis(regulations string, w http.ResponseWriter) e
 	prompt := pkg.ZeroShot(regulations)
 	openaiKey := os.Getenv("OPENAI_API_KEY")
 	openaiUrl := "https://api.openai.com/v1/chat/completions"
-	modelName := "gpt-4o"
+	modelName := "gpt-4o-mini"
 
 	payload := []byte(fmt.Sprintf(`{
 		"model": "%s",

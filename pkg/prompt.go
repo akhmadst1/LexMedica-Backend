@@ -5,36 +5,50 @@ import (
 	"strings"
 )
 
-const disharmonyResponseFormat = `Give your answer in Indonesian language and JSON format like this:
+const disharmonyPromptHeader = `You are a law expert that can detect potential disharmony problem in law documents.
+	Disharmony is a condition in which two or more regulations address similar subject matter but are inconsistent in their technical specifications.
+	Fundamentally, this creates conflicts between regulations and leads to setbacks either horizontally (across sectors or institutions) or vertically (between hierarchical levels of law).
+	You are given multiple legal provisions from Indonesian legal documents. These provisions might seem aligned but can contain conflicting rules, vague overlaps, or inconsistent exceptions that cause confusion in implementation.
+	Your task is to identify and explain any potential legal disharmony, contradiction, or ambiguity between the given legal provisions.
+	Focus on conflicts in meaning, scope, exceptions, or enforcement that may cause practical or legal ambiguity.
 
-{
-  "result": <boolean>,
-  "analysis": <string>
-}
+	Give your answer in Indonesian language and JSON format like this:
+	
+	{
+	"result": <boolean>,
+	"analysis": <string>
+	}
 
-- Field "result" is whether you found potential disharmony or not, if disharmony found set to true, if not set to false.
-- Field "analysis" the result of the analysis.
-- Do not add any other message outside the JSON format.`
+	- Field "result" is whether you found potential disharmony or not, if disharmony found set to true, if not set to false.
+	- Field "analysis" the result of the analysis and must be a brief summary of your step-by-step reasoning.
+	- Do not add any other message outside the JSON format.
+	`
 
 func ZeroShot(regulations string) string {
-	return fmt.Sprintf(`Answer in Indonesian, identify the disharmony between this following Indonesian law regulations:
-	%s
-	End of input.
+	return fmt.Sprintf(`%s
+	
+	Answer in Indonesian, identify the disharmony between this following Indonesian law regulations:
 	
 	%s
-	`,
-		regulations, disharmonyResponseFormat)
+
+	End of input.`,
+		disharmonyPromptHeader, regulations)
 }
 
 func FewShot(regulations string) string {
 	var fewShotPromptBuilder strings.Builder
-	fewShotPromptBuilder.WriteString("Below are some examples of potential disharmony on Indonesian law regulations:")
-	testCases, err := LoadTestCases("./data/test_case.json")
+	fewShotPromptBuilder.WriteString(disharmonyPromptHeader)
+	fewShotPromptBuilder.WriteString("\nBelow are some examples of potential disharmony on Indonesian law regulations:")
+	testCases, err := LoadTestCases("../data/test_case.json")
 	if err != nil {
 		return fmt.Sprintf("Error loading test cases: %v", err)
 	}
 
 	for _, ex := range testCases {
+		// if ex.ID == tcId {
+		// 	continue
+		// }
+
 		var exRegText string
 		for _, reg := range ex.Regulations {
 			exRegText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
@@ -46,89 +60,63 @@ func FewShot(regulations string) string {
 
 	fewShotPromptBuilder.WriteString("Answer in Indonesian, identify the potential disharmony between this following Indonesian law regulations:\n")
 	fewShotPromptBuilder.WriteString(regulations)
-	fewShotPromptBuilder.WriteString("\nEnd of input.\n\n")
-	fewShotPromptBuilder.WriteString(disharmonyResponseFormat)
+	fewShotPromptBuilder.WriteString("\nEnd of input.")
 
 	return fewShotPromptBuilder.String()
 }
 
 func ChainOfThought(regulations string) string {
 	var cotPromptBuilder strings.Builder
-	cotPromptBuilder.WriteString("Answer in Indonesian, identify the potential disharmony between the following Indonesian law regulations.\n")
+	cotPromptBuilder.WriteString(disharmonyPromptHeader)
 	cotPromptBuilder.WriteString(`
-	Follow this step by step of reasoning to identify the disharmony:
-		1. Identify the main legal norms, obligations, or permissions from each regulation, including relevant articles or clauses.
-		2. Compare these legal norms side by side in terms of:
-		- Definition or terminology
-		- Legal scope and applicability
-		- Authority/responsibility assigned
-		- Exceptions or special conditions
-		3. Analyze potential disharmony:
-		- Is there a direct contradiction?
-		- Is there overlapping jurisdiction or authority?
-		- Are there ambiguities that can lead to multiple interpretations?
-		4. Conclude with a summary of your findings:
-		- Clearly state if disharmony exists or not.
-		- If disharmony exists, briefly explain the legal or practical implication.
-		5. Recommend possible resolutions if appropriate:
-		- Suggest harmonization steps (e.g., revision, repeal, new regulation, clarification).
-		- Mention which regulation may take precedence (if applicable).
+		Analyze step-by-step:
+		- Identify key norms from each regulation.
+		- Compare definitions, scope, responsibilities, and exceptions.
+		- Find potential contradictions or overlaps.
+		- Conclude whether there's disharmony and explain why.
+		- Optionally suggest a resolution if needed.
 		
 		Now, analyze the regulations input below:`)
 	cotPromptBuilder.WriteString(regulations)
-	cotPromptBuilder.WriteString("\nEnd of input.\n\n")
-	cotPromptBuilder.WriteString(disharmonyResponseFormat)
+	cotPromptBuilder.WriteString("\nEnd of input.")
 
 	return cotPromptBuilder.String()
 }
 
 func FewShotChainOfThought(regulations string) string {
-	var fewShotCotPromptBuilder strings.Builder
-	fewShotCotPromptBuilder.WriteString("Answer in Indonesian, identify the disharmony between the following Indonesian law regulations.\n")
-	fewShotCotPromptBuilder.WriteString(`
-	Analyze the following step by step of reasoning:
-	1. Identify the main legal norms, obligations, or permissions from each regulation, including relevant articles or clauses.
-	2. Compare these legal norms side by side in terms of:
-	- Definition or terminology
-	- Legal scope and applicability
-	- Authority/responsibility assigned
-	- Exceptions or special conditions
-	3. Analyze potential disharmony:
-	- Is there a direct contradiction?
-	- Is there overlapping jurisdiction or authority?
-	- Are there ambiguities that can lead to multiple interpretations?
-	4. Conclude with a summary of your findings:
-	- Clearly state if disharmony exists or not.
-	- If disharmony exists, briefly explain the legal or practical implication.
-	5. Recommend possible resolutions if appropriate:
-	- Suggest harmonization steps (e.g., revision, repeal, new regulation, clarification).
-	- Mention which regulation may take precedence (if applicable).
+	var promptBuilder strings.Builder
 
-	Important Notes:
-	1. Be neutral and objective.
-	2. Not all case will have disharmony, so if you find no disharmony, please state that clearly.
-	3. Provide your analysis in Indonesian, plain text, in paragraph, without numbering, bullets, or any other formatting.`)
+	promptBuilder.WriteString(disharmonyPromptHeader)
+	promptBuilder.WriteString(`
+	Below are some examples:`)
 
-	fewShotCotPromptBuilder.WriteString("\n\nBelow are some examples:")
-
-	testCases, err := LoadTestCases("./data/test_case.json")
+	testCases, err := LoadTestCases("../data/test_case.json")
 	if err != nil {
 		return fmt.Sprintf("Error loading test cases: %v", err)
 	}
 
 	for _, ex := range testCases {
+		// if ex.ID == tcId {
+		// 	continue
+		// }
+
 		var exRegText string
 		for _, reg := range ex.Regulations {
 			exRegText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
 		}
-		fewShotCotPromptBuilder.WriteString(fmt.Sprintf(
-			"\nInput Regulations:\n%s\nReasoning:\n%s\nExpected Potential Disharmony Analysis Output:\n%s\n\n---\n", exRegText, ex.Reason, ex.Disharmony))
+
+		promptBuilder.WriteString(fmt.Sprintf(
+			"\nInput Regulations:\n%s"+
+				"Step-by-step Reasoning:\n%s\n"+
+				"Final Output:\n{\n  \"result\": true,\n  \"analysis\": \"%s\"\n}\n"+
+				"\n---", exRegText, ex.Reason, strings.ReplaceAll(ex.Disharmony, "\"", "'")))
 	}
 
-	fewShotCotPromptBuilder.WriteString("Now, analyze the regulations input below:\n")
-	fewShotCotPromptBuilder.WriteString(regulations)
-	fewShotCotPromptBuilder.WriteString("\nEnd of input.\n\n")
-	fewShotCotPromptBuilder.WriteString(disharmonyResponseFormat)
+	promptBuilder.WriteString(`
+	Now, analyze the regulations input below:
+	`)
+	promptBuilder.WriteString(regulations)
+	promptBuilder.WriteString("\nEnd of input.")
 
-	return fewShotCotPromptBuilder.String()
+	return promptBuilder.String()
 }

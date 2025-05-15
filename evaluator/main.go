@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"math"
@@ -43,6 +44,11 @@ type TestCase struct {
 	Disharmony  string       `json:"disharmony"`
 }
 
+type ChatDisharmony struct {
+	Result   bool   `json:"result"`
+	Analysis string `json:"analysis"`
+}
+
 // GetEmbedding fetches embedding vector from OpenAI API
 func GetEmbedding(text string) ([]float64, error) {
 	apiKey := os.Getenv("OPENAI_API_KEY")
@@ -50,7 +56,7 @@ func GetEmbedding(text string) ([]float64, error) {
 
 	payload := EmbeddingRequest{
 		Input: text,
-		Model: "text-embedding-ada-002",
+		Model: "text-embedding-3-small",
 	}
 	data, _ := json.Marshal(payload)
 
@@ -143,6 +149,24 @@ func EvaluateDisharmonySimilarity(groundTruth, gptOutput string) (float64, error
 	return similarity, nil
 }
 
+func ExtractChatDisharmony(gptOutput string) (ChatDisharmony, error) {
+	// Remove any code block formatting like ```json or ``` from GPT output
+	cleaned := strings.TrimSpace(gptOutput)
+	if strings.HasPrefix(cleaned, "```json") {
+		cleaned = strings.TrimPrefix(cleaned, "```json")
+	} else if strings.HasPrefix(cleaned, "```") {
+		cleaned = strings.TrimPrefix(cleaned, "```")
+	}
+	cleaned = strings.TrimSuffix(cleaned, "```")
+	cleaned = strings.TrimSpace(cleaned)
+
+	var parsed ChatDisharmony
+	if err := json.Unmarshal([]byte(cleaned), &parsed); err != nil {
+		return ChatDisharmony{}, errors.New("failed to parse JSON from GPT output")
+	}
+	return parsed, nil
+}
+
 // BatchEvaluate compares GPT responses for all test cases
 func BatchEvaluate(testCaseFile string, filename string) error {
 	testCases, err := pkg.LoadTestCases(testCaseFile)
@@ -152,122 +176,48 @@ func BatchEvaluate(testCaseFile string, filename string) error {
 
 	var output bytes.Buffer
 
+	var totalSimilarity, totalPrecision, totalRecall, totalF1 float64
+	var successfulCases int
+
+	// Generate GPT output for each test case
 	for _, testCase := range testCases {
-		// Generate GPT output for each test case
+		var fullRegulationText string
+		for _, reg := range testCase.Regulations {
+			fullRegulationText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
+		}
+		var promptBuilder strings.Builder
+
 		// -------------------- ZERO SHOT --------------------
-		// var fullRegulationText string
-		// for _, reg := range testCase.Regulations {
-		// 	fullRegulationText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
-		// }
-
-		// ** --------- No COSTAR ----------
-		// var promptBuilder strings.Builder
-		// promptBuilder.WriteString("Answer in Indonesian, identify the disharmony between the following law regulations.\n")
-		// promptBuilder.WriteString("Input Regulations:\n")
-		// promptBuilder.WriteString(fullRegulationText)
-		// gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(promptBuilder.String())
-
-		// ** --------- COSTAR -----------
-		// gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(pkg.CostarPromptZeroShot(fullRegulationText))
+		promptBuilder.WriteString(pkg.ZeroShot(fullRegulationText))
 
 		// ** -------------------- FEW SHOT --------------------
-		// var promptBuilder strings.Builder
-		// promptBuilder.WriteString(pkg.CostarHeader)
-		// promptBuilder.WriteString("\n\nBelow are some examples:")
-		// // Add other test cases as few-shot examples (excluding current)
-		// for j, ex := range testCases {
-		// 	if i == j {
-		// 		continue
-		// 	}
-		// 	var exampleText strings.Builder
-		// 	for _, reg := range ex.Regulations {
-		// 		exampleText.WriteString(fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content))
-		// 	}
-		// 	promptBuilder.WriteString(fmt.Sprintf(
-		// 		"\nInput Regulations:\n%sExpected Disharmony:\n%s\n\n---\n",
-		// 		exampleText.String(), ex.Disharmony,
-		// 	))
-		// }
-		// // Add the current test case (as the new input, without disharmony)
-		// var currentRegText strings.Builder
-		// for _, reg := range testCase.Regulations {
-		// 	currentRegText.WriteString(fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content))
-		// }
-		// promptBuilder.WriteString("\nNow, analyze the following:\n")
-		// promptBuilder.WriteString("Input Regulations:\n")
-		// promptBuilder.WriteString(currentRegText.String())
-		// promptBuilder.WriteString("End of input.\n")
-		// gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(promptBuilder.String())
+		// promptBuilder.WriteString(pkg.FewShot(fullRegulationText, testCase.ID))
 
 		// ** ----------------------- CHAIN OF THOUGHT -------------------
-		// var fullRegulationText string
-		// for _, reg := range testCase.Regulations {
-		// 	fullRegulationText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
-		// }
-		// gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(pkg.CostarPromptChainOfThought(fullRegulationText))
+		// promptBuilder.WriteString(pkg.ChainOfThought(fullRegulationText))
 
 		// ** ----------------------- FEW SHOT + CHAIN OF THOUGHT -------------------
-		var promptBuilder strings.Builder
-		promptBuilder.WriteString(pkg.CostarHeader)
-		promptBuilder.WriteString(`
-		Now, analyze the following step by step of reasoning:
-		1. Identify the main legal norms, obligations, or permissions from each regulation, including relevant articles or clauses.
-		2. Compare these legal norms side by side in terms of:
-		   - Definition or terminology
-		   - Legal scope and applicability
-		   - Authority/responsibility assigned
-		   - Exceptions or special conditions
-		3. Analyze potential disharmony:
-		   - Is there a direct contradiction?
-		   - Is there overlapping jurisdiction or authority?
-		   - Are there ambiguities that can lead to multiple interpretations?
-		4. Conclude with a summary of your findings:
-		   - Clearly state if disharmony exists or not.
-		   - If disharmony exists, briefly explain the legal or practical implication.
-		5. Recommend possible resolutions if appropriate:
-		   - Suggest harmonization steps (e.g., revision, repeal, new regulation, clarification).
-		   - Mention which regulation may take precedence (if applicable).
-
-		Important Notes:
-		1. Be neutral and objective.
-		2. Not all case will have disharmony, so if you find no disharmony, please state that clearly.
-		3. Provide your analysis in Indonesian, plain text, in paragraph, without numbering, bullets, or any other formatting.
-		`)
-		// Add other test cases as few-shot examples (excluding current)
-		promptBuilder.WriteString("\n\nBelow are some examples:")
-		for _, ex := range testCases {
-			if ex.ID == testCase.ID {
-				continue
-			}
-			var exampleText strings.Builder
-			for _, reg := range ex.Regulations {
-				exampleText.WriteString(fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content))
-			}
-			promptBuilder.WriteString(fmt.Sprintf(
-				"\nInput Regulations:\n%sExpected Disharmony:\n%s\n\n---\n",
-				exampleText.String(), ex.Disharmony,
-			))
-		}
-		// Add the current regulations for analysis
-		var currentRegText strings.Builder
-		for _, reg := range testCase.Regulations {
-			currentRegText.WriteString(fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content))
-		}
-		promptBuilder.WriteString("\nNow, analyze the regulations input below:\n")
-		promptBuilder.WriteString(currentRegText.String())
-		promptBuilder.WriteString("End of input.\n")
-		gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(promptBuilder.String())
+		// promptBuilder.WriteString(pkg.FewShotChainOfThought(fullRegulationText, testCase.ID))
 
 		// ------------------------ END OF PROMPT ------------------------
+		gptOutput, err := services.EvaluateOpenAIDisharmonyAnalysis(promptBuilder.String())
 		if err != nil {
-			msg := fmt.Sprintf("Error generating output for test case %s: %v\n", testCase.ID, err)
+			msg := fmt.Sprintf("Error generating GPT output for test case %s: %v\n", testCase.ID, err)
+			fmt.Print(msg)
+			output.WriteString(msg)
+			continue
+		}
+
+		parsed, err := ExtractChatDisharmony(gptOutput)
+		if err != nil {
+			msg := fmt.Sprintf("Error parsing JSON response for test case %s: %v\n", testCase.ID, err)
 			fmt.Print(msg)
 			output.WriteString(msg)
 			continue
 		}
 
 		// Compare GPT output with ground truth disharmony
-		similarity, err := EvaluateDisharmonySimilarity(testCase.Disharmony, gptOutput)
+		similarity, err := EvaluateDisharmonySimilarity(testCase.Disharmony, parsed.Analysis)
 		if err != nil {
 			msg := fmt.Sprintf("Error comparing test case %s: %v\n", testCase.ID, err)
 			fmt.Print(msg)
@@ -277,27 +227,47 @@ func BatchEvaluate(testCaseFile string, filename string) error {
 
 		p, r, f1 := ComputeF1Score(gptOutput, testCase.Disharmony)
 
+		totalSimilarity += similarity
+		totalPrecision += p
+		totalRecall += r
+		totalF1 += f1
+		successfulCases++
+
 		// Build result
 		result := fmt.Sprintf(
 			"--------------------------------------------------\n"+
 				"Test Case: %s - %s\n"+
 				"Ground Truth Disharmony:\n%s\n\n"+
-				"GPT Output:\n%s\n\n"+
+				"Disharmony Result:%t\n"+
+				"GPT Disharmony Analysis:\n%s\n\n"+
 				"Similarity Score: %.4f\n"+
 				"Precision: %.4f\n"+
 				"Recall: %.4f\n"+
 				"F1 Score: %.4f\n\n",
-			testCase.ID, testCase.Title, testCase.Disharmony, gptOutput, similarity, p, r, f1,
+			testCase.ID, testCase.Title, testCase.Disharmony, parsed.Result, parsed.Analysis, similarity, p, r, f1,
 		)
-
-		if similarity >= 0.80 {
-			result += "GPT response semantically matches expected output.\n"
-		} else {
-			result += "GPT response is semantically different.\n"
-		}
 		result += ("--------------------------------------------------\n\n")
 
 		output.WriteString(result)
+	}
+
+	if successfulCases > 0 {
+		avgSimilarity := totalSimilarity / float64(successfulCases)
+		avgPrecision := totalPrecision / float64(successfulCases)
+		avgRecall := totalRecall / float64(successfulCases)
+		avgF1 := totalF1 / float64(successfulCases)
+
+		summary := fmt.Sprintf(
+			"\n==================== Overall Metrics Summary ====================\n"+
+				"Total Cases Evaluated: %d\n"+
+				"Average Similarity Score: %.4f\n"+
+				"Average Precision:        %.4f\n"+
+				"Average Recall:           %.4f\n"+
+				"Average F1 Score:         %.4f\n"+
+				"=================================================================\n",
+			successfulCases, avgSimilarity, avgPrecision, avgRecall, avgF1,
+		)
+		output.WriteString(summary)
 	}
 
 	// Save output to file
