@@ -27,8 +27,14 @@ func DisharmonyAnalysis(c *gin.Context) {
 		flusher.Flush()
 	}
 
-	// OpenAI Model
-	if err := services.StreamOpenAIDisharmonyAnalysis(req.Regulations, c.Writer); err != nil {
-		c.String(http.StatusInternalServerError, "Streaming error: %v", err)
+	// OpenAI Model Streaming
+	// if err := services.StreamOpenAIDisharmonyAnalysis(req.Regulations, c.Writer); err != nil {
+	// 	c.String(http.StatusInternalServerError, "Streaming error: %v", err)
+	// }
+
+	// OpenAI Model JSON format
+	if err := services.OpenAIDisharmonyAnalysisJSON(req.Regulations, c.Writer); err != nil {
+		c.String(http.StatusInternalServerError, "Internal server error: %v", err)
+		return
 	}
 }

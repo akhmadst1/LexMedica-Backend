@@ -5,11 +5,25 @@ import (
 	"strings"
 )
 
+const disharmonyResponseFormat = `Give your answer in Indonesian language and JSON format like this:
+
+{
+  "result": <boolean>,
+  "analysis": <string>
+}
+
+- Field "result" is whether you found potential disharmony or not, if disharmony found set to true, if not set to false.
+- Field "analysis" the result of the analysis.
+- Do not add any other message outside the JSON format.`
+
 func ZeroShot(regulations string) string {
 	return fmt.Sprintf(`Answer in Indonesian, identify the disharmony between this following Indonesian law regulations:
 	%s
-	End of input.`,
-		regulations)
+	End of input.
+	
+	%s
+	`,
+		regulations, disharmonyResponseFormat)
 }
 
 func FewShot(regulations string) string {
@@ -32,7 +46,8 @@ func FewShot(regulations string) string {
 
 	fewShotPromptBuilder.WriteString("Answer in Indonesian, identify the potential disharmony between this following Indonesian law regulations:\n")
 	fewShotPromptBuilder.WriteString(regulations)
-	fewShotPromptBuilder.WriteString("\nEnd of input.\n")
+	fewShotPromptBuilder.WriteString("\nEnd of input.\n\n")
+	fewShotPromptBuilder.WriteString(disharmonyResponseFormat)
 
 	return fewShotPromptBuilder.String()
 }
@@ -61,7 +76,8 @@ func ChainOfThought(regulations string) string {
 		
 		Now, analyze the regulations input below:`)
 	cotPromptBuilder.WriteString(regulations)
-	cotPromptBuilder.WriteString("\nEnd of input.\n")
+	cotPromptBuilder.WriteString("\nEnd of input.\n\n")
+	cotPromptBuilder.WriteString(disharmonyResponseFormat)
 
 	return cotPromptBuilder.String()
 }
@@ -111,7 +127,8 @@ func FewShotChainOfThought(regulations string) string {
 
 	fewShotCotPromptBuilder.WriteString("Now, analyze the regulations input below:\n")
 	fewShotCotPromptBuilder.WriteString(regulations)
-	fewShotCotPromptBuilder.WriteString("\nEnd of input.\n")
+	fewShotCotPromptBuilder.WriteString("\nEnd of input.\n\n")
+	fewShotCotPromptBuilder.WriteString(disharmonyResponseFormat)
 
 	return fewShotCotPromptBuilder.String()
 }
