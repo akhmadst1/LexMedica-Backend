@@ -4,6 +4,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/akhmadst1/tugas-akhir-backend/config"
 	"github.com/akhmadst1/tugas-akhir-backend/internal/handlers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -16,6 +17,9 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
+	// Initialize Supabase client
+	config.Init()
+
 	// Initialize Router
 	r := gin.Default()
 
@@ -24,7 +28,7 @@ func main() {
 
 	// ** Add CORS Middleware **
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://lex-medica-frontend.vercel.app"}, // Frontend URL
+		AllowOrigins:     []string{"*"}, // Frontend URL
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
@@ -33,7 +37,22 @@ func main() {
 	}))
 
 	// ** API Routes **
-	r.POST("/api/chat/analyze", handlers.DisharmonyAnalysis)
+	chat := r.Group("/api/chat")
+	{
+		session := chat.Group("/session")
+		{
+			session.POST("", handlers.CreateChatSession)
+			session.GET("/:user_id", handlers.GetChatSessionsByUserId)
+			session.DELETE("/:id", handlers.DeleteChatSession)
+		}
+
+		// chat.POST("/qna", handlers.QNA)
+		chat.POST("/analyze", handlers.DisharmonyAnalysis)
+
+		// chat.POST("/sessions", handlers.CreateChatSessionHandler)
+		// chat.GET("/sessions/:userId", handlers.GetChatSessionsHandler)
+		// chat.DELETE("/sessions/:sessionId", handlers.DeleteChatSessionHandler)
+	}
 
 	// Start Server
 	r.Run(":8080")
