@@ -14,7 +14,7 @@ type ChatMessage struct {
 	Message            string              `json:"message"`
 	CreatedAt          string              `json:"created_at,omitempty"`
 	DisharmonyAnalysis *DisharmonyAnalysis `json:"disharmony_analysis,omitempty"`
-	Documents          []Document          `json:"documents,omitempty"`
+	Documents          []ChatDocument      `json:"documents,omitempty"`
 }
 
 type DisharmonyAnalysis struct {

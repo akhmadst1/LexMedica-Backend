@@ -57,8 +57,15 @@ func main() {
 			disharmony.POST("", handlers.CreateChatDisharmony)
 		}
 
+		chat.POST("/document", handlers.CreateChatDocument)
+
 		// chat.POST("/qna", handlers.QNA)
 		chat.POST("/analyze", handlers.DisharmonyAnalysis)
+	}
+
+	document := r.Group("/api/document")
+	{
+		document.GET("/:type/:number/:year", handlers.GetLinkDocumentByTypeNumberYear)
 	}
 
 	// Start Server
