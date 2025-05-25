@@ -27,14 +27,14 @@ func CreateChatSession(c *gin.Context) {
 	c.JSON(http.StatusOK, session)
 }
 
-func GetChatSessionsByUserId(c *gin.Context) {
+func GetChatSessionsByUserID(c *gin.Context) {
 	userID := c.Param("user_id") // e.g., api/chat/sessions/:user_id
 	if userID == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Missing user_id"})
 		return
 	}
 
-	sessions, err := repositories.GetChatSessionsByUserId(userID)
+	sessions, err := repositories.GetChatSessionsByUserID(userID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch chat sessions"})
 		return

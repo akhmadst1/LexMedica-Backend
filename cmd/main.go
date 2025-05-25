@@ -42,8 +42,14 @@ func main() {
 		session := chat.Group("/session")
 		{
 			session.POST("", handlers.CreateChatSession)
-			session.GET("/:user_id", handlers.GetChatSessionsByUserId)
+			session.GET("/:user_id", handlers.GetChatSessionsByUserID)
 			session.DELETE("/:id", handlers.DeleteChatSession)
+		}
+
+		message := chat.Group("/message")
+		{
+			message.POST("", handlers.CreateChatMessage)
+			message.GET("/:session_id", handlers.GetChatMessagesBySessionID)
 		}
 
 		// chat.POST("/qna", handlers.QNA)

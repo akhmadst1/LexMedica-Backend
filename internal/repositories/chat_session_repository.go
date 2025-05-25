@@ -7,7 +7,7 @@ import (
 	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
 )
 
-func CreateChatSession(userID, title string) (models.ChatSession, error) {
+func CreateChatSession(userID string, title string) (models.ChatSession, error) {
 	var insertedSessions []models.ChatSession
 
 	err := config.Supabase.DB.
@@ -25,7 +25,7 @@ func CreateChatSession(userID, title string) (models.ChatSession, error) {
 	return insertedSessions[0], nil
 }
 
-func GetChatSessionsByUserId(userID string) ([]models.ChatSession, error) {
+func GetChatSessionsByUserID(userID string) ([]models.ChatSession, error) {
 	var sessions []models.ChatSession
 	err := config.Supabase.DB.
 		From("chat_sessions").
