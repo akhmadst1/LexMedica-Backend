@@ -9,7 +9,7 @@ import (
 
 func CreateChatMessage(c *gin.Context) {
 	var chatMessageRequest struct {
-		SessionID string `json:"session_id"`
+		SessionID int    `json:"session_id"`
 		Sender    string `json:"sender"`
 		Message   string `json:"message"`
 	}

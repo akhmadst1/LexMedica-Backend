@@ -7,7 +7,7 @@ import (
 	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
 )
 
-func CreateChatMessage(sessionID string, sender string, message string) (models.ChatMessage, error) {
+func CreateChatMessage(sessionID int, sender string, message string) (models.ChatMessage, error) {
 	var insertedMessages []models.ChatMessage
 
 	err := config.Supabase.DB.

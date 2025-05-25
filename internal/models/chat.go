@@ -8,13 +8,13 @@ type ChatSession struct {
 }
 
 type ChatMessage struct {
-	ID         int                 `json:"id,omitempty"`
-	SessionID  int                 `json:"session_id,omitempty"`
-	Sender     string              `json:"sender"`
-	Message    string              `json:"message"`
-	CreatedAt  string              `json:"created_at,omitempty"`
-	Disharmony *DisharmonyAnalysis `json:"disharmony,omitempty"`
-	Documents  []Document          `json:"documents,omitempty"`
+	ID                 int                 `json:"id,omitempty"`
+	SessionID          int                 `json:"session_id,omitempty"`
+	Sender             string              `json:"sender"`
+	Message            string              `json:"message"`
+	CreatedAt          string              `json:"created_at,omitempty"`
+	DisharmonyAnalysis *DisharmonyAnalysis `json:"disharmony_analysis,omitempty"`
+	Documents          []Document          `json:"documents,omitempty"`
 }
 
 type DisharmonyAnalysis struct {
@@ -22,5 +22,4 @@ type DisharmonyAnalysis struct {
 	MessageID int    `json:"message_id,omitempty"`
 	Result    bool   `json:"result"`
 	Analysis  string `json:"analysis"`
-	CreatedAt string `json:"created_at,omitempty"`
 }

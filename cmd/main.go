@@ -52,12 +52,13 @@ func main() {
 			message.GET("/:session_id", handlers.GetChatMessagesBySessionID)
 		}
 
+		disharmony := chat.Group("/disharmony")
+		{
+			disharmony.POST("", handlers.CreateChatDisharmony)
+		}
+
 		// chat.POST("/qna", handlers.QNA)
 		chat.POST("/analyze", handlers.DisharmonyAnalysis)
-
-		// chat.POST("/sessions", handlers.CreateChatSessionHandler)
-		// chat.GET("/sessions/:userId", handlers.GetChatSessionsHandler)
-		// chat.DELETE("/sessions/:sessionId", handlers.DeleteChatSessionHandler)
 	}
 
 	// Start Server
