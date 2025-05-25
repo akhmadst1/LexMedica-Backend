@@ -8,8 +8,8 @@ import (
 	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
 )
 
-func CreateChatDocument(messageID int, documentID int, clause string, snippet string) (models.ChatDocument, error) {
-	var insertedChatDocument []models.ChatDocument
+func CreateChatDocument(messageID int, documentID int, clause string, snippet string) (models.ChatMessageDocument, error) {
+	var insertedChatDocument []models.ChatMessageDocument
 
 	err := config.Supabase.DB.
 		From("chat_message_documents").
@@ -22,7 +22,7 @@ func CreateChatDocument(messageID int, documentID int, clause string, snippet st
 		Execute(&insertedChatDocument)
 
 	if err != nil || len(insertedChatDocument) == 0 {
-		return models.ChatDocument{}, fmt.Errorf("failed to insert chat message document: %w", err)
+		return models.ChatMessageDocument{}, fmt.Errorf("failed to insert chat message document: %w", err)
 	}
 
 	return insertedChatDocument[0], nil

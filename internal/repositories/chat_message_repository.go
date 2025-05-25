@@ -31,33 +31,7 @@ func GetChatMessagesBySessionID(sessionID string) ([]models.ChatMessage, error) 
 
 	err := config.Supabase.DB.
 		From("chat_messages").
-		Select(`*`).
-		// 	id,
-		// 	session_id,
-		// 	sender,
-		// 	message,
-		// 	created_at,
-		// 	disharmony_analysis (
-		// 		id,
-		// 		result,
-		// 		analysis
-		// 	),
-		// 	chat_message_documents (
-		// 		message_id,
-		// 		clause,
-		// 		document_id,
-		// 		snippet,
-		// 		link_documents (
-		// 			id,
-		// 			type,
-		// 			about,
-		// 			number,
-		// 			year,
-		// 			status,
-		// 			url
-		// 		)
-		// 	)
-		// `).
+		Select("id,session_id,sender,message,created_at,disharmony_analysis(*),chat_message_documents(message_id,document_id,clause,snippet,link_documents(*))").
 		Eq("session_id", sessionID).
 		Execute(&messages)
 

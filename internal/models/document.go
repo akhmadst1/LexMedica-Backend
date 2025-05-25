@@ -1,11 +1,11 @@
 package models
 
-type ChatDocument struct {
-	MessageID  int          `json:"message_id,omitempty"`
-	DocumentID int          `json:"document_id,omitempty"`
-	Clause     string       `json:"clause"`
-	Snippet    string       `json:"snippet"`
-	Source     LinkDocument `json:"source"`
+type ChatMessageDocument struct {
+	MessageID    int          `json:"message_id"`
+	Clause       string       `json:"clause"`
+	DocumentID   int          `json:"document_id"`
+	Snippet      string       `json:"snippet"`
+	LinkDocument LinkDocument `json:"link_documents"`
 }
 
 type LinkDocument struct {

@@ -8,18 +8,18 @@ type ChatSession struct {
 }
 
 type ChatMessage struct {
-	ID                 int                 `json:"id,omitempty"`
-	SessionID          int                 `json:"session_id,omitempty"`
-	Sender             string              `json:"sender"`
-	Message            string              `json:"message"`
-	CreatedAt          string              `json:"created_at,omitempty"`
-	DisharmonyAnalysis *DisharmonyAnalysis `json:"disharmony_analysis,omitempty"`
-	Documents          []ChatDocument      `json:"documents,omitempty"`
+	ID                   int                   `json:"id"`
+	SessionID            int                   `json:"session_id"`
+	Sender               string                `json:"sender"`
+	Message              string                `json:"message"`
+	CreatedAt            string                `json:"created_at"`
+	DisharmonyAnalysis   []DisharmonyAnalysis  `json:"disharmony_analysis"` // now it's a slice!
+	ChatMessageDocuments []ChatMessageDocument `json:"chat_message_documents"`
 }
 
 type DisharmonyAnalysis struct {
-	ID        int    `json:"id,omitempty"`
-	MessageID int    `json:"message_id,omitempty"`
+	ID        int    `json:"id"`
+	MessageID int    `json:"message_id"`
 	Result    bool   `json:"result"`
 	Analysis  string `json:"analysis"`
 }

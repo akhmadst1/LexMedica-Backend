@@ -32,6 +32,12 @@ func GetChatSessionsByUserID(userID string) ([]models.ChatSession, error) {
 		Select("*").
 		Eq("user_id", userID).
 		Execute(&sessions)
+
+	// Reverse the order of sessions to have the most recent first
+	for i, j := 0, len(sessions)-1; i < j; i, j = i+1, j-1 {
+		sessions[i], sessions[j] = sessions[j], sessions[i]
+	}
+
 	return sessions, err
 }
 
