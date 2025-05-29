@@ -6,9 +6,13 @@ import (
 )
 
 const disharmonyPromptHeader = `You are a law expert that can detect potential disharmony problem in law documents.
-Disharmony is a condition in which two or more regulations address similar subject matter but are inconsistent in their technical specifications.
+
+Potential disharmony is a condition in which two or more regulations address similar subject matter but are inconsistent in their technical specifications.
+
 Fundamentally, this creates conflicts between regulations and leads to setbacks either horizontally (across sectors or institutions) or vertically (between hierarchical levels of law).
+
 You are given multiple legal provisions from Indonesian legal documents. These provisions might seem aligned but can contain conflicting rules, vague overlaps, or inconsistent exceptions that cause confusion in implementation.
+
 Your task is to identify and explain any potential legal disharmony, contradiction, or ambiguity between the given legal provisions.
 Focus on conflicts in meaning, scope, exceptions, or enforcement that may cause practical or legal ambiguity.
 
@@ -19,10 +23,10 @@ Give your answer in Indonesian language and JSON format like this:
 "analysis": <string>
 }
 
-Note:
+Important Notes:
 - Not all case has potential disharmony, state it clearly if there is not any potential disharmony found.
 - Field "result" is whether you found potential disharmony or not, if disharmony found set to true, if not set to false.
-- Field "analysis" the result of the analysis.
+- Field "analysis" is the analysis text of the potential disharmony.
 - Do not add any other message outside the JSON format.`
 
 func ZeroShot(regulations string) string {
@@ -71,11 +75,19 @@ func ChainOfThought(regulations string) string {
 	cotPromptBuilder.WriteString(disharmonyPromptHeader)
 	cotPromptBuilder.WriteString(`
 Analyze step-by-step:
-- Identify key norms from each regulation.
-- Compare definitions, scope, responsibilities, and exceptions.
-- Find potential contradictions or overlaps.
-- Conclude whether there's disharmony and explain why.
-- Optionally suggest a resolution if needed.
+1. Identify key norms from each regulation.
+2. Compare definitions, scope, responsibilities, and exceptions.
+3. Look for entity and description comparisons:
+	- Entities: people, organizations, time, locations.
+	- Descriptions: what is the subject, object, and action in each regulation.
+4. Look for overlaps or mismatches between entities and descriptions.
+5. If any, extract and consider the comparison between following:
+	- Nominal values (currency or quantities) mentioned in the provisions.
+	- Positions or official titles (e.g., Menteri, Kepala Dinas, etc.).
+	- References to other articles, clauses, or laws (e.g., "Pasal 3 ayat (2)").
+6. If any, evaluate and compare the number of requirements between the related provisions.
+7. Conclude whether there is any potential disharmony and explain the reasoning in detail.
+8. Do not make any suggestion, just state the comparison.
 
 Now, analyze the regulations input below:`)
 	cotPromptBuilder.WriteString(regulations)

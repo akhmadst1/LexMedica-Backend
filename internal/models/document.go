@@ -9,11 +9,11 @@ type ChatMessageDocument struct {
 }
 
 type LinkDocument struct {
-	ID     int    `json:"id,omitempty"`
-	About  string `json:"about,omitempty"`
-	Type   string `json:"type,omitempty"`
-	Number int    `json:"number,omitempty"`
-	Year   int    `json:"year,omitempty"`
-	Status string `json:"status,omitempty"`
-	URL    string `json:"url,omitempty"`
+	ID     int    `json:"id"`
+	About  string `json:"about"`
+	Type   string `json:"type"`
+	Number int    `json:"number"`
+	Year   int    `json:"year"`
+	Status string `json:"status"`
+	URL    string `json:"url"`
 }
