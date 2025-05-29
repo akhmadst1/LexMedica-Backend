@@ -1,21 +1,19 @@
 package main
 
 import (
-	"log"
 	"time"
 
 	"github.com/akhmadst1/tugas-akhir-backend/config"
 	"github.com/akhmadst1/tugas-akhir-backend/internal/handlers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 )
 
 func main() {
 	// Load .env file
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	// if err := godotenv.Load(); err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
 
 	// Initialize Supabase client
 	config.Init()
