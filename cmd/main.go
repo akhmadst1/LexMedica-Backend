@@ -26,12 +26,14 @@ func main() {
 
 	// ** Add CORS Middleware **
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://lex-medica-frontend.vercel.app"}, // Frontend URL
+		AllowOriginFunc: func(origin string) bool {
+			return origin == "https://lex-medica-frontend.vercel.app"
+		},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
-		MaxAge:           12 * time.Hour, // Cache preflight request for 12 hours
+		MaxAge:           12 * time.Hour,
 	}))
 
 	// ** API Routes **
