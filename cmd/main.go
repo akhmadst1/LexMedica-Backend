@@ -57,7 +57,7 @@ func main() {
 			disharmony.POST("", handlers.CreateChatDisharmony)
 		}
 
-		chat.POST("/document", handlers.CreateChatDocument)
+		chat.POST("/document", handlers.CreateChatDocuments)
 
 		// chat.POST("/qna", handlers.QNA)
 		chat.POST("/analyze", handlers.DisharmonyAnalysis)

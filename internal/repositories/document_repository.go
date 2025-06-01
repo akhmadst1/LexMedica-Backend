@@ -8,24 +8,33 @@ import (
 	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
 )
 
-func CreateChatDocument(messageID int, documentID int, clause string, snippet string) (models.ChatMessageDocument, error) {
-	var insertedChatDocument []models.ChatMessageDocument
-
-	err := config.Supabase.DB.
-		From("chat_message_documents").
-		Insert(map[string]interface{}{
-			"message_id":  messageID,
-			"document_id": documentID,
-			"clause":      clause,
-			"snippet":     snippet,
-		}).
-		Execute(&insertedChatDocument)
-
-	if err != nil || len(insertedChatDocument) == 0 {
-		return models.ChatMessageDocument{}, fmt.Errorf("failed to insert chat message document: %w", err)
+func CreateChatDocuments(docs []models.ChatMessageDocument) ([]models.ChatMessageDocument, error) {
+	if len(docs) == 0 {
+		return nil, fmt.Errorf("no documents to insert")
 	}
 
-	return insertedChatDocument[0], nil
+	// Convert each struct to map[string]interface{} for Supabase insert
+	records := make([]map[string]interface{}, len(docs))
+	for i, doc := range docs {
+		records[i] = map[string]interface{}{
+			"message_id":  doc.MessageID,
+			"document_id": doc.DocumentID,
+			"clause":      doc.Clause,
+			"snippet":     doc.Snippet,
+		}
+	}
+
+	var inserted []models.ChatMessageDocument
+	err := config.Supabase.DB.
+		From("chat_message_documents").
+		Insert(records).
+		Execute(&inserted)
+
+	if err != nil || len(inserted) == 0 {
+		return nil, fmt.Errorf("failed to insert chat message documents: %w", err)
+	}
+
+	return inserted, nil
 }
 
 func GetLinkDocumentByTypeNumberYear(documentType string, number string, year string) ([]models.LinkDocument, error) {

@@ -3,31 +3,41 @@ package handlers
 import (
 	"net/http"
 
+	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
 	"github.com/akhmadst1/tugas-akhir-backend/internal/repositories"
 	"github.com/gin-gonic/gin"
 )
 
-func CreateChatDocument(c *gin.Context) {
-	var CreateChatDocumentRequest struct {
+func CreateChatDocuments(c *gin.Context) {
+	var createRequests []struct {
 		MessageID  int    `json:"message_id"`
 		DocumentID int    `json:"document_id"`
 		Clause     string `json:"clause"`
 		Snippet    string `json:"snippet"`
 	}
 
-	if err := c.BindJSON(&CreateChatDocumentRequest); err != nil {
+	if err := c.BindJSON(&createRequests); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
 		return
 	}
 
-	document, err := repositories.CreateChatDocument(CreateChatDocumentRequest.MessageID,
-		CreateChatDocumentRequest.DocumentID, CreateChatDocumentRequest.Clause, CreateChatDocumentRequest.Snippet)
+	var docs []models.ChatMessageDocument
+	for _, req := range createRequests {
+		docs = append(docs, models.ChatMessageDocument{
+			MessageID:  req.MessageID,
+			DocumentID: req.DocumentID,
+			Clause:     req.Clause,
+			Snippet:    req.Snippet,
+		})
+	}
+
+	insertedDocs, err := repositories.CreateChatDocuments(docs)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create document"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create documents"})
 		return
 	}
 
-	c.JSON(http.StatusOK, document)
+	c.JSON(http.StatusOK, insertedDocs)
 }
 
 func GetLinkDocumentByTypeNumberYear(c *gin.Context) {

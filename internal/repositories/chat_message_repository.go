@@ -2,6 +2,7 @@ package repositories
 
 import (
 	"fmt"
+	"sort"
 
 	"github.com/akhmadst1/tugas-akhir-backend/config"
 	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
@@ -38,6 +39,10 @@ func GetChatMessagesBySessionID(sessionID string) ([]models.ChatMessage, error) 
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch chat messages: %w", err)
 	}
+
+	sort.Slice(messages, func(i, j int) bool {
+		return messages[i].ID < messages[j].ID
+	})
 
 	return messages, nil
 }

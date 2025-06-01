@@ -2,6 +2,7 @@ package repositories
 
 import (
 	"fmt"
+	"sort"
 
 	"github.com/akhmadst1/tugas-akhir-backend/config"
 	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
@@ -34,9 +35,9 @@ func GetChatSessionsByUserID(userID string) ([]models.ChatSession, error) {
 		Execute(&sessions)
 
 	// Reverse the order of sessions to have the most recent first
-	for i, j := 0, len(sessions)-1; i < j; i, j = i+1, j-1 {
-		sessions[i], sessions[j] = sessions[j], sessions[i]
-	}
+	sort.Slice(sessions, func(i, j int) bool {
+		return sessions[i].ID > sessions[j].ID
+	})
 
 	return sessions, err
 }
