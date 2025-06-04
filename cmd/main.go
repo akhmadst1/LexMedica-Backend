@@ -59,7 +59,7 @@ func main() {
 
 		chat.POST("/document", handlers.CreateChatDocuments)
 
-		// chat.POST("/qna", handlers.QNA)
+		chat.POST("/qna", handlers.QNA)
 		chat.POST("/analyze", handlers.DisharmonyAnalysis)
 	}
 
