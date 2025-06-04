@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
+	"strings"
 )
 
 type QnaRequest struct {
@@ -25,7 +27,16 @@ func QNAService(req QnaRequest, apiKey string) ([]byte, error) {
 		return nil, fmt.Errorf("failed to marshal payload: %w", err)
 	}
 
-	modelURL := req.ModelURL
+	var modelURL string
+	switch strings.ToLower(req.ModelURL) {
+	case "simple":
+		modelURL = os.Getenv("SIMPLE_RAG_URL")
+	case "multi":
+		modelURL = os.Getenv("MULTI_AGENT_RAG_URL")
+	default:
+		modelURL = req.ModelURL // fallback: treat as raw URL
+	}
+
 	if modelURL == "" {
 		modelURL = "http://localhost:8080"
 	}
