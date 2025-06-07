@@ -5,6 +5,20 @@ import (
 	"io/ioutil"
 )
 
+type Regulation struct {
+	Document string `json:"document"`
+	Article  string `json:"article"`
+	Content  string `json:"content"`
+}
+
+type TestCase struct {
+	ID          string       `json:"id"`
+	Title       string       `json:"title"`
+	Regulations []Regulation `json:"regulations"`
+	Reason      string       `json:"reason"`
+	Disharmony  string       `json:"disharmony"`
+}
+
 // LoadTestCases loads the test cases from a JSON file
 func LoadTestCases(filePath string) ([]TestCase, error) {
 	file, err := ioutil.ReadFile(filePath)
