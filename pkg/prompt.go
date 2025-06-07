@@ -40,19 +40,19 @@ End of input.`,
 		disharmonyPromptHeader, regulations)
 }
 
-func FewShot(regulations string) string {
+func FewShot(regulations string, tcId string) string {
 	var fewShotPromptBuilder strings.Builder
 	fewShotPromptBuilder.WriteString(disharmonyPromptHeader)
 	fewShotPromptBuilder.WriteString("\nBelow are some examples of potential disharmony on Indonesian law regulations:")
-	testCases, err := LoadTestCases("../data/test_case.json")
+	testCases, err := LoadTestCases("../data/test_cases_7.json")
 	if err != nil {
 		return fmt.Sprintf("Error loading test cases: %v", err)
 	}
 
 	for _, ex := range testCases {
-		// if ex.ID == tcId {
-		// 	continue
-		// }
+		if ex.ID == tcId {
+			continue
+		}
 
 		var exRegText string
 		for _, reg := range ex.Regulations {
@@ -96,21 +96,21 @@ Now, analyze the regulations input below:`)
 	return cotPromptBuilder.String()
 }
 
-func FewShotChainOfThought(regulations string) string {
+func FewShotChainOfThought(regulations string, tcId string) string {
 	var promptBuilder strings.Builder
 
 	promptBuilder.WriteString(disharmonyPromptHeader)
 	promptBuilder.WriteString("\nBelow are some examples:")
 
-	testCases, err := LoadTestCases("../data/test_case.json")
+	testCases, err := LoadTestCases("../data/test_cases_7.json")
 	if err != nil {
 		return fmt.Sprintf("Error loading test cases: %v", err)
 	}
 
 	for _, ex := range testCases {
-		// if ex.ID == tcId {
-		// 	continue
-		// }
+		if ex.ID == tcId {
+			continue
+		}
 
 		var exRegText string
 		for _, reg := range ex.Regulations {
