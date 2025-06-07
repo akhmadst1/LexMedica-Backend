@@ -1,0 +1,107 @@
+[
+  {
+    "id": "tc1",
+    "title": "Tenaga Kesehatan",
+    "regulations": [
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan",
+        "article": "Pasal 58 ayat (2)",
+        "content": "Tuntutan ganti rugi sebagaimana dimaksud pada ayat (1) tidak berlaku bagi tenaga kesehatan yang melakukan tindakan penyelamatan nyawa atau pencegahan kecacatan seseorang dalam keadaan darurat."
+      },
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2014 tentang Tenaga Kesehatan",
+        "article": "Pasal 77",
+        "content": "Setiap Penerima Pelayanan Kesehatan yang dirugikan akibat kesalahan atau kelalaian Tenaga Kesehatan dapat meminta ganti rugi sesuai dengan ketentuan peraturan perundang-undangan."
+      }
+    ],
+    "disharmony": "Dalam ketentuan tersebut di atas, ditemukan potensi disharmoni dalam perihal tuntutan ganti rugi bagi tenaga kesehatan. Pasal 58 UU Kesehatan secara tegas mengatur pengecualian bahwa tuntutan ganti rugi tidak berlaku bagi tenaga kesehatan yang melakukan tindakan penyelamatan nyawa atau pencegahan kecacatan dalam keadaan darurat. Namun Pasal 77 UU Tenaga Kesehatan tidak merinci lebih jauh dan jelas apakah semua kesalahan atau kelalaian tenaga kesehatan dapat dimintakan ganti rugi.",
+    "reason": "1. Key Norms:\n- UU No. 36/2009 Pasal 58(2): Menyatakan bahwa tenaga kesehatan tidak dapat dituntut ganti rugi jika melakukan tindakan penyelamatan nyawa atau pencegahan kecacatan dalam keadaan darurat.\n- UU No. 36/2014 Pasal 77: Menyatakan bahwa penerima pelayanan kesehatan dapat meminta ganti rugi jika dirugikan akibat kesalahan atau kelalaian tenaga kesehatan, tanpa menyebutkan pengecualian dalam kondisi darurat.\n\n2. Definitions, Scope, Responsibilities, Exceptions:\n- Definisi tanggung jawab hukum berbeda: UU 2009 memberikan pengecualian dalam kondisi darurat, sedangkan UU 2014 tidak menyebut pengecualian ini.\n- UU 2009 membatasi ruang lingkup tanggung jawab pada kondisi non-darurat, UU 2014 bersifat umum terhadap semua kesalahan atau kelalaian.\n\n3. Entities & Descriptions:\n- Entitas: 'Tenaga Kesehatan' dan 'Penerima Pelayanan Kesehatan'.\n- Subjek: tenaga kesehatan; Objek: penerima layanan; Aksi: melakukan atau tidak melakukan tanggung jawab hukum atas kesalahan/kelalaian.\n\n4. Overlaps/Mismatches:\n- Mismatch terdapat pada kondisi darurat: UU 2009 secara eksplisit menyatakan pengecualian, sedangkan UU 2014 mengatur secara umum tanpa batasan.\n\n5. Nominal Values, Titles, Cross-references:\n- Tidak terdapat nilai nominal atau gelar jabatan. Ada rujukan internal di UU 2009 (ayat 1), tapi tidak ada referensi silang eksplisit antara kedua pasal.\n\n6. Number of Requirements:\n- UU 2009 menyertakan satu kondisi pengecualian spesifik. UU 2014 menyatakan ketentuan umum tanpa menyebutkan kondisi atau pengecualian tertentu.\n\n7. Conclusion:\n- Terdapat potensi disharmoni karena UU 2009 menetapkan pengecualian dalam keadaan darurat, sedangkan UU 2014 tidak mengatur pengecualian serupa, sehingga menimbulkan ambiguitas terkait perlindungan hukum bagi tenaga kesehatan dalam kondisi darurat."
+  },
+  {
+    "id": "tc2",
+    "title": "Transplantasi Organ",
+    "regulations": [
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan",
+        "article": "Pasal 64",
+        "content": "Penyembuhan penyakit dan pemulihan kesehatan dapat dilakukan melalui transplantasi organ dan/atau jaringan tubuh, implan obat dan/atau alat kesehatan, bedah plastik dan rekonstruksi, serta penggunaan sel punca."
+      },
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan",
+        "article": "Pasal 65 ayat (3)",
+        "content": "Ketentuan mengenai syarat dan tata cara penyelenggaraan transplantasi organ dan/atau jaringan tubuh sebagaimana dimaksud pada ayat (1) dan ayat (2) ditetapkan dengan Peraturan Pemerintah."
+      },
+      {
+        "document": "Peraturan Menteri Kesehatan Nomor 38 Tahun 2016 tentang Penyelenggaraan Transplantasi Organ",
+        "article": "Konsiderans 'Mengingat:'",
+        "content": "Mengingat : 2. Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan (Lembaran Negara Republik Indonesia Tahun 2009 Nomor 144, Tambahan Lembaran Negara Republik Indonesia Nomor 5063)."
+      }
+    ],
+    "disharmony": "Penyembuhan penyakit dan pemulihan kesehatan diselenggarakan untuk mengembalikan status kesehatan, mengembalikan fungsi tubuh akibat penyakit dan/atau akibat cacat, atau menghilangkan cacat. Dalam Pasal 64 UU Kesehatan disebutkan bahwa penyembuhan penyakit dan pemulihan kesehatan dapat dilakukan melalui salah satunya adalah transplantasi organ. Dalam Pasal 65 ayat (3) UU Kesehatan mengatur bahwa ketentuan mengenai syarat dan tata cara penyelenggaraan transplantasi organ diatur dengan peraturan pemerintah. Terkait dengan ketentuan tersebut, terdapat Peraturan Menteri Kesehatan Nomor 38 Tahun 2016 tentang Penyelenggaraan Transplantasi Organ (Permenkes Penyelenggaraan Transplantasi Organ) yang dalam konsiderans “mengingat”-nya mencantumkan UU Kesehatan. Sehingga terhadap hal tersebut terdapat ketidaksinkronan amanat peraturan pelaksanaan. Hal ini dikarenakan Pasal 65 UU Kesehatan mengatur secara tegas bahwa terkait syarat dan tata cara penyelenggaraan transplantasi organ dan/atau jaringan tubuh diatur dengan peraturan pemerintah, akan tetapi yang diatur lebih lanjut dalam UU Kesehatan tersebut adalah Permenkes Transplantasi Organ.",
+    "reason": "1. Key Norms:\n- UU No. 36/2009 Pasal 64: Menyebutkan bahwa transplantasi organ merupakan salah satu metode penyembuhan dan pemulihan kesehatan.\n- UU No. 36/2009 Pasal 65(3): Menyatakan bahwa syarat dan tata cara penyelenggaraan transplantasi organ harus diatur dalam Peraturan Pemerintah.\n- Permenkes No. 38/2016: Mengatur penyelenggaraan transplantasi organ dan mencantumkan UU No. 36/2009 dalam konsiderans, tetapi merupakan Peraturan Menteri, bukan Peraturan Pemerintah.\n\n2. Definitions, Scope, Responsibilities, Exceptions:\n- Definisi dan ruang lingkup transplantasi telah disebut sebagai bagian dari upaya penyembuhan.\n- Tanggung jawab pengaturan secara eksplisit diberikan kepada Peraturan Pemerintah, bukan peraturan menteri.\n- Tidak terdapat pengecualian dalam ketentuan ini.\n\n3. Entities & Descriptions:\n- Entitas: Kementerian Kesehatan, pemerintah, peraturan pelaksana.\n- Subjek: penyelenggara regulasi; Objek: transplantasi organ; Aksi: mengatur syarat dan tata cara.\n\n4. Overlaps/Mismatches:\n- Mismatch terjadi antara norma pengaturan (Peraturan Pemerintah) dengan realisasi pengaturan (Permenkes).\n- Permenkes mengatur hal yang seharusnya diatur dalam Peraturan Pemerintah sebagaimana diamanatkan oleh Pasal 65(3).\n\n5. Nominal Values, Titles, Cross-references:\n- Tidak terdapat nominal.\n- Terdapat rujukan eksplisit pada UU No. 36/2009 dalam konsiderans Permenkes.\n- Jabatan yang terlibat: Menteri Kesehatan.\n\n6. Number of Requirements:\n- UU No. 36/2009 memuat satu ketentuan normatif terkait peraturan pelaksana (harus Peraturan Pemerintah), sementara hanya terdapat satu aturan pelaksana yang muncul dalam bentuk Permenkes.\n\n7. Conclusion:\n- Terdapat potensi disharmoni karena amanat pembentukan peraturan pelaksana sebagaimana diatur dalam UU tidak dipenuhi secara bentuk hukum, yaitu seharusnya dalam bentuk Peraturan Pemerintah namun yang diterbitkan adalah Peraturan Menteri."
+  },
+  {
+    "id": "tc4",
+    "title": "Ketentuan Aborsi",
+    "regulations": [
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan",
+        "article": "Pasal 76",
+        "content": "Aborsi sebagaimana dimaksud dalam Pasal 75 hanya dapat dilakukan sebelum kehamilan berumur 6 (enam) minggu dihitung dari hari pertama haid terakhir, kecuali dalam hal kedaruratan medis."
+      },
+      {
+        "document": "Peraturan Pemerintah Nomor 61 Tahun 2014 tentang Kesehatan Reproduksi",
+        "article": "Pasal 31 ayat (2)",
+        "content": "Tindakan aborsi akibat perkosaan sebagaimana dimaksud pada ayat (1) huruf b hanya dapat dilakukan apabila usia kehamilan paling lama berusia 40 (empat puluh) hari dihitung sejak hari pertama haid terakhir."
+      }
+    ],
+    "disharmony": "Potensi disharmoni juga mungkin terjadi akibat adanya perbedaan umur kehamilan yang dapat dilakukan aborsi akibat perkosaan, dimana Pasal 76 huruf a UU Kesehatan menetapkan umur kehamilan sebelum 6 (enam) minggu dan Pasal 31 ayat (2) Peraturan Pemerintah Nomor 61 Tahun 2014 tentang Kesehatan Reproduksi (PP Kesehatan Reproduksi) menetapkan umur kehamilan paling lama 40 (empat puluh) hari dihitung sejak hari pertama haid terakhir. Perbedaan kedua ketentuan tersebut menyebabkan munculnya bermacam interpretasi pada pelaksanaannya.",
+    "reason": "1. Key Norms:\n- UU No. 36/2009 Pasal 76: Aborsi hanya dapat dilakukan sebelum kehamilan berumur 6 minggu, kecuali dalam kedaruratan medis.\n- PP No. 61/2014 Pasal 31(2): Aborsi akibat perkosaan hanya dapat dilakukan apabila usia kehamilan paling lama 40 hari.\n\n2. Definitions, Scope, Responsibilities, Exceptions:\n- Kedua ketentuan mengatur batas usia kehamilan untuk aborsi dalam kasus tertentu.\n- UU menetapkan batas 6 minggu; PP menetapkan 40 hari (±5 minggu 5 hari).\n- Perbedaan dalam batas waktu berpotensi menimbulkan ambiguitas implementasi.\n\n3. Entities & Descriptions:\n- Entitas: tenaga medis, perempuan korban perkosaan.\n- Subjek: pelaksana aborsi; Objek: kehamilan akibat perkosaan; Aksi: menentukan waktu tindakan.\n\n4. Overlaps/Mismatches:\n- Mismatch antara rentang waktu yang diatur oleh UU dan PP.\n- Perbedaan batas waktu bisa memengaruhi akses layanan hukum dan medis.\n\n5. Nominal Values, Titles, Cross-references:\n- Nilai nominal: 6 minggu vs 40 hari.\n- Tidak terdapat referensi silang eksplisit.\n\n6. Number of Requirements:\n- UU menyatakan satu syarat usia kehamilan (<6 minggu).\n- PP menyatakan usia kehamilan maksimal 40 hari untuk kasus perkosaan.\n\n7. Conclusion:\n- Terdapat potensi disharmoni karena terdapat dua ketentuan berbeda mengenai batas usia kehamilan yang sah untuk tindakan aborsi akibat perkosaan."
+  },
+  {
+    "id": "tc5",
+    "title": "Pelayanan Darah",
+    "regulations": [
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan",
+        "article": "Pasal 87 ayat (1) dan (2)",
+        "content": "(1) Penyelenggaraan donor darah dan pengolahan darah dilakukan oleh Unit Transfusi Darah. (2) Unit Transfusi Darah sebagaimana dimaksud pada ayat (1) dapat diselenggarakan oleh Pemerintah, pemerintah daerah, dan/atau organisasi sosial yang tugas pokok dan fungsinya di bidang kepalangmerahan."
+      },
+      {
+        "document": "Undang-Undang Nomor 1 Tahun 2018 tentang Kepalangmerahan",
+        "article": "Pasal 22 huruf b",
+        "content": "Memberikan pelayanan darah sesuai dengan ketentuan peraturan perundang-undangan. Penjelasan Pasal 22 huruf b: Dalam ketentuan ini pelayanan darah yang dilakukan oleh PMI melalui Unit Donor Darah (UDD) PMI."
+      }
+    ],
+    "disharmony": "Ketentuan Pasal 87 ayat (1) dan (2) UU Kesehatan tersebut terdapat inkonsisten nomenklatur dimana unit yang melakukan pelayanan darah disebut dengan Unit Donor Darah dalam UU Kepalangmerahan, sedangkan UU Kesehatan menyebutnya dengan Unit Transfusi Darah yang melakukan penyelenggaraan donor darah dan pengolahan darah. Hal ini menyebabkan permasalahan implementasi pelayanan darah di lapangan.",
+    "reason": "1. Key Norms:\n- UU No. 36/2009 Pasal 87(1)–(2): Menyebut Unit Transfusi Darah sebagai penyelenggara donor dan pengolahan darah, yang dapat dijalankan oleh pemerintah, pemda, atau organisasi sosial di bidang kepalangmerahan.\n- UU No. 1/2018 Pasal 22 huruf b: Menyatakan bahwa pelayanan darah dilakukan oleh PMI melalui Unit Donor Darah.\n\n2. Definitions, Scope, Responsibilities, Exceptions:\n- UU 36/2009 menyebut \"Unit Transfusi Darah\" sebagai istilah operasional.\n- UU 1/2018 menggunakan istilah \"Unit Donor Darah\".\n- Tidak ada pengecualian disebutkan secara eksplisit.\n\n3. Entities & Descriptions:\n- Entitas: PMI, pemerintah, organisasi sosial.\n- Subjek: pelaksana layanan darah; Objek: donor dan pengolahan darah; Aksi: menyelenggarakan pelayanan darah.\n\n4. Overlaps/Mismatches:\n- Terdapat mismatch istilah antara dua UU terkait unit pelaksana pelayanan darah.\n- Potensi interpretasi berbeda terkait organisasi atau unit yang sah dalam praktik.\n\n5. Nominal Values, Titles, Cross-references:\n- Tidak ada nominal.\n- Jabatan yang relevan: tidak secara eksplisit disebut.\n- Tidak terdapat referensi silang pasal antar undang-undang.\n\n6. Number of Requirements:\n- UU 36/2009 menyebut dua ayat normatif mengenai pelaksana dan bentuk organisasi penyelenggara darah.\n- UU 1/2018 menyatakan satu ketentuan mengenai pelaksanaan oleh PMI.\n\n7. Conclusion:\n- Terdapat potensi disharmoni karena terdapat perbedaan nomenklatur antara 'Unit Transfusi Darah' dan 'Unit Donor Darah' yang merujuk pada institusi penyelenggara layanan darah."
+  },
+  {
+    "id": "tc7",
+    "title": "Unit Transfusi Darah",
+    "regulations": [
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan",
+        "article": "Pasal 98 ayat (1)",
+        "content": "Sediaan farmasi dan alat kesehatan harus aman, berkhasiat/bermanfaat, bermutu, dan terjangkau."
+      },
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan",
+        "article": "Pasal 111 ayat (3)",
+        "content": "Setiap makanan dan minuman yang dikemas wajib diberi tanda atau label yang berisi: a. Nama produk; b. Daftar bahan yang digunakan; c. Berat bersih atau isi bersih; d. Nama dan alamat pihak yang memproduksi atau memasukkan makanan dan minuman ke dalam wilayah Indonesia; dan e. Tanggal, bulan dan tahun kadaluwarsa."
+      },
+      {
+        "document": "Undang-Undang Nomor 33 Tahun 2014 tentang Jaminan Produk Halal",
+        "article": "Pasal 1 ayat (1)",
+        "content": "Produk adalah barang dan/atau jasa yang terkait dengan makanan, minuman, obat, kosmetik, produk kimiawi, produk biologi, produk rekayasa genetic, serta barang gunaan yang dipakai, digunakan, atau dimanfaatkan oleh masyarakat."
+      },
+      {
+        "document": "Undang-Undang Nomor 33 Tahun 2014 tentang Jaminan Produk Halal",
+        "article": "Pasal 4",
+        "content": "Produk yang masuk, beredar, dan diperdagangkan di wilayah Indonesia wajib bersertifikat halal."
+      }
+    ],
+    "disharmony": "Berdasarkan ketentuan tersebut, terdapat potensi disharmoni antara Pasal 98 ayat (1) dan Pasal 111 ayat (3) UU Kesehatan dengan Pasal 4 UU Jaminan Produk Halal. Hal ini dikarenakan dalam UU Jaminan Produk Halal menyebutkan bahwa makanan, minuman, obat dan kosmetik masuk dalam definisi produk. Selanjutnya berdasarkan ketentuan Pasal 4 UU Jaminan Produk Halal, produk wajib bersertifikat halal. Sehingga UU Kesehatan perlu menyesuaikan dengan UU Jaminan Produk Halal dikarenakan UU Kesehatan belum mengakomodir terkait adanya kewajiban bersertifikat halal khususnya untuk sediaan farmasi, makanan dan minuman.",
+    "reason": "1. Key Norms:\n- UU No. 36/2009 Pasal 98(1): Sediaan farmasi dan alat kesehatan harus aman, bermanfaat, bermutu, dan terjangkau.\n- UU No. 36/2009 Pasal 111(3): Label pada makanan dan minuman kemasan harus mencantumkan informasi produk.\n- UU No. 33/2014 Pasal 1(1): Produk termasuk makanan, minuman, obat, kosmetik, dll.\n- UU No. 33/2014 Pasal 4: Produk yang beredar di Indonesia wajib bersertifikat halal.\n\n2. Definitions, Scope, Responsibilities, Exceptions:\n- UU Kesehatan mengatur keamanan dan mutu produk kesehatan dan makanan.\n- UU JPH memperluas kewajiban dengan syarat halal.\n- Tidak terdapat penyesuaian eksplisit antara kedua rezim hukum dalam hal persyaratan halal.\n\n3. Entities & Descriptions:\n- Entitas: produsen, pemerintah, konsumen.\n- Subjek: makanan, minuman, obat; Objek: sertifikasi halal dan label mutu; Aksi: beredar, dikonsumsi, diberi label.\n\n4. Overlaps/Mismatches:\n- UU Kesehatan tidak menyebut sertifikasi halal secara eksplisit meskipun produk yang dimaksud berada dalam cakupan UU JPH.\n- Potensi disharmoni muncul akibat tumpang tindih regulasi yang tidak terintegrasi.\n\n5. Nominal Values, Titles, Cross-references:\n- Tidak ada nilai nominal.\n- Jabatan atau badan pelaksana tidak disebut secara langsung.\n- Tidak ada referensi silang eksplisit antar undang-undang.\n\n6. Number of Requirements:\n- UU Kesehatan menetapkan beberapa persyaratan teknis produk.\n- UU JPH menambahkan persyaratan tambahan yaitu kewajiban halal.\n\n7. Conclusion:\n- Terdapat potensi disharmoni karena perbedaan cakupan regulatif mengenai produk yang sama antara dua undang-undang."
+  }
+]
