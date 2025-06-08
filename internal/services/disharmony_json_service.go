@@ -38,9 +38,7 @@ func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) err
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", "Bearer "+openaiKey)
 
-	// Start measuring time
 	startTime := time.Now()
-
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
@@ -48,7 +46,6 @@ func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) err
 	}
 	defer resp.Body.Close()
 
-	// Measure processing time in milliseconds
 	durationMs := time.Since(startTime).Milliseconds()
 
 	body, err := io.ReadAll(resp.Body)
@@ -56,21 +53,40 @@ func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) err
 		return err
 	}
 
-	var responseMap map[string]interface{}
+	var responseMap struct {
+		Choices []struct {
+			Message struct {
+				Content string `json:"content"`
+			} `json:"message"`
+		} `json:"choices"`
+	}
+
 	if err := json.Unmarshal(body, &responseMap); err != nil {
 		return err
 	}
 
-	// Add processing_time in milliseconds
-	responseMap["processing_time_ms"] = durationMs
+	if len(responseMap.Choices) == 0 {
+		http.Error(w, "No choices returned", http.StatusInternalServerError)
+		return nil
+	}
 
-	modifiedBody, err := json.Marshal(responseMap)
-	if err != nil {
+	// Parse the inner JSON string (content)
+	var extracted struct {
+		Result   bool   `json:"result"`
+		Analysis string `json:"analysis"`
+	}
+	if err := json.Unmarshal([]byte(responseMap.Choices[0].Message.Content), &extracted); err != nil {
 		return err
+	}
+
+	// Build final response
+	finalResponse := map[string]interface{}{
+		"result":             extracted.Result,
+		"analysis":           extracted.Analysis,
+		"processing_time_ms": durationMs,
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Write(modifiedBody)
-	return nil
+	return json.NewEncoder(w).Encode(finalResponse)
 }
