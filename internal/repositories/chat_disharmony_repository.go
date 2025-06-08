@@ -13,10 +13,10 @@ func CreateChatDisharmony(messageID int, result bool, analysis string, processin
 	err := config.Supabase.DB.
 		From("disharmony_analysis").
 		Insert(map[string]interface{}{
-			"message_id":       messageID,
-			"result":           result,
-			"analysis":         analysis,
-			"processingTimeMs": processingTimeMs,
+			"message_id":         messageID,
+			"result":             result,
+			"analysis":           analysis,
+			"processing_time_ms": processingTimeMs,
 		}).
 		Execute(&insertedDisharmonyAnalysis)
 
