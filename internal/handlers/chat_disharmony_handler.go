@@ -9,9 +9,10 @@ import (
 
 func CreateChatDisharmony(c *gin.Context) {
 	var chatDisharmonyRequest struct {
-		MessageID int    `json:"message_id"`
-		Result    bool   `json:"result"`
-		Analysis  string `json:"analysis"`
+		MessageID        int    `json:"message_id"`
+		Result           bool   `json:"result"`
+		Analysis         string `json:"analysis"`
+		ProcessingTimeMs int    `json:"processing_time_ms"`
 	}
 
 	if err := c.BindJSON(&chatDisharmonyRequest); err != nil {
@@ -19,7 +20,7 @@ func CreateChatDisharmony(c *gin.Context) {
 		return
 	}
 
-	analysis, err := repositories.CreateChatDisharmony(chatDisharmonyRequest.MessageID, chatDisharmonyRequest.Result, chatDisharmonyRequest.Analysis)
+	analysis, err := repositories.CreateChatDisharmony(chatDisharmonyRequest.MessageID, chatDisharmonyRequest.Result, chatDisharmonyRequest.Analysis, chatDisharmonyRequest.ProcessingTimeMs)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to insert disharmony analysis to chat"})
 		return

@@ -8,15 +8,16 @@ import (
 	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
 )
 
-func CreateChatMessage(sessionID int, sender string, message string) (models.ChatMessage, error) {
+func CreateChatMessage(sessionID int, sender string, message string, processingTimeMs int) (models.ChatMessage, error) {
 	var insertedMessages []models.ChatMessage
 
 	err := config.Supabase.DB.
 		From("chat_messages").
 		Insert(map[string]interface{}{
-			"session_id": sessionID,
-			"sender":     sender,
-			"message":    message,
+			"session_id":         sessionID,
+			"sender":             sender,
+			"message":            message,
+			"processing_time_ms": processingTimeMs,
 		}).
 		Execute(&insertedMessages)
 
@@ -32,7 +33,7 @@ func GetChatMessagesBySessionID(sessionID string) ([]models.ChatMessage, error) 
 
 	err := config.Supabase.DB.
 		From("chat_messages").
-		Select("id,session_id,sender,message,created_at,disharmony_analysis(*),chat_message_documents(message_id,document_id,clause,snippet,link_documents(*))").
+		Select("id,session_id,sender,message,created_at,processing_time_ms,disharmony_analysis(*),chat_message_documents(message_id,document_id,clause,snippet,link_documents(*))").
 		Eq("session_id", sessionID).
 		Execute(&messages)
 

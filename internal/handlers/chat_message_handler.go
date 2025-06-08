@@ -9,9 +9,10 @@ import (
 
 func CreateChatMessage(c *gin.Context) {
 	var chatMessageRequest struct {
-		SessionID int    `json:"session_id"`
-		Sender    string `json:"sender"`
-		Message   string `json:"message"`
+		SessionID        int    `json:"session_id"`
+		Sender           string `json:"sender"`
+		Message          string `json:"message"`
+		ProcessingTimeMs int    `json:"processing_time_ms"`
 	}
 
 	if err := c.BindJSON(&chatMessageRequest); err != nil {
@@ -19,7 +20,7 @@ func CreateChatMessage(c *gin.Context) {
 		return
 	}
 
-	message, err := repositories.CreateChatMessage(chatMessageRequest.SessionID, chatMessageRequest.Sender, chatMessageRequest.Message)
+	message, err := repositories.CreateChatMessage(chatMessageRequest.SessionID, chatMessageRequest.Sender, chatMessageRequest.Message, chatMessageRequest.ProcessingTimeMs)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to insert message"})
 		return
