@@ -40,7 +40,7 @@ End of input.`,
 		disharmonyPromptHeader, regulations)
 }
 
-func FewShot(regulations string, tcId string) string {
+func FewShot(regulations string) string {
 	var fewShotPromptBuilder strings.Builder
 	fewShotPromptBuilder.WriteString(disharmonyPromptHeader)
 	fewShotPromptBuilder.WriteString("\nBelow are some examples of potential disharmony on Indonesian law regulations:")
@@ -50,9 +50,9 @@ func FewShot(regulations string, tcId string) string {
 	}
 
 	for _, ex := range testCases {
-		if ex.ID == tcId {
-			continue
-		}
+		// if ex.ID == tcId {
+		// 	continue
+		// }
 
 		var exRegText string
 		for _, reg := range ex.Regulations {
@@ -96,7 +96,7 @@ Now, analyze the regulations input below:`)
 	return cotPromptBuilder.String()
 }
 
-func FewShotChainOfThought(regulations string, tcId string) string {
+func FewShotChainOfThought(regulations string) string {
 	var promptBuilder strings.Builder
 
 	promptBuilder.WriteString(disharmonyPromptHeader)
@@ -108,9 +108,9 @@ func FewShotChainOfThought(regulations string, tcId string) string {
 	}
 
 	for _, ex := range testCases {
-		if ex.ID == tcId {
-			continue
-		}
+		// if ex.ID == tcId {
+		// 	continue
+		// }
 
 		var exRegText string
 		for _, reg := range ex.Regulations {
