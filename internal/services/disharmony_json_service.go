@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/akhmadst1/tugas-akhir-backend/pkg"
 )
@@ -16,7 +17,6 @@ func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) err
 	openaiUrl := "https://api.openai.com/v1/chat/completions"
 	modelName := "gpt-4o-mini"
 
-	// Prepare JSON payload
 	payload := map[string]interface{}{
 		"model": modelName,
 		"messages": []map[string]string{
@@ -31,7 +31,6 @@ func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) err
 		return err
 	}
 
-	// Create request
 	req, err := http.NewRequest("POST", openaiUrl, bytes.NewBuffer(payloadBytes))
 	if err != nil {
 		return err
@@ -39,7 +38,9 @@ func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) err
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", "Bearer "+openaiKey)
 
-	// Send request
+	// Start measuring time
+	startTime := time.Now()
+
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
@@ -47,17 +48,29 @@ func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) err
 	}
 	defer resp.Body.Close()
 
-	// Read and relay the full JSON response
+	// Measure processing time in milliseconds
+	durationMs := time.Since(startTime).Milliseconds()
+
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
 
-	// Set response headers
+	var responseMap map[string]interface{}
+	if err := json.Unmarshal(body, &responseMap); err != nil {
+		return err
+	}
+
+	// Add processing_time in milliseconds
+	responseMap["processing_time_ms"] = durationMs
+
+	modifiedBody, err := json.Marshal(responseMap)
+	if err != nil {
+		return err
+	}
+
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	// Write the full response
-	w.Write(body)
+	w.Write(modifiedBody)
 	return nil
 }
