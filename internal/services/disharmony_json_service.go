@@ -6,6 +6,8 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/akhmadst1/tugas-akhir-backend/pkg"
@@ -70,16 +72,27 @@ func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) err
 		return nil
 	}
 
-	// Parse the inner JSON string (content)
+	// Get the assistant's message content
+	content := strings.TrimSpace(responseMap.Choices[0].Message.Content)
+
+	// Extract JSON block using regex (in case there's extra explanation text)
+	jsonBlockRegex := regexp.MustCompile(`(?s)\{.*\}`)
+	jsonMatch := jsonBlockRegex.FindString(content)
+	if jsonMatch == "" {
+		http.Error(w, "No valid JSON block found in LLM response", http.StatusInternalServerError)
+		return nil
+	}
+
 	var extracted struct {
 		Result   bool   `json:"result"`
 		Analysis string `json:"analysis"`
 	}
-	if err := json.Unmarshal([]byte(responseMap.Choices[0].Message.Content), &extracted); err != nil {
-		return err
+	if err := json.Unmarshal([]byte(jsonMatch), &extracted); err != nil {
+		http.Error(w, "Failed to parse JSON from LLM response: "+err.Error(), http.StatusInternalServerError)
+		return nil
 	}
 
-	// Build final response
+	// Final response to frontend
 	finalResponse := map[string]interface{}{
 		"result":             extracted.Result,
 		"analysis":           extracted.Analysis,
