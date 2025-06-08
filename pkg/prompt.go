@@ -44,7 +44,7 @@ func FewShot(regulations string) string {
 	var fewShotPromptBuilder strings.Builder
 	fewShotPromptBuilder.WriteString(disharmonyPromptHeader)
 	fewShotPromptBuilder.WriteString("\nBelow are some examples of potential disharmony on Indonesian law regulations:")
-	testCases, err := LoadTestCases("../data/test_cases_7.json")
+	testCases, err := LoadTestCases("data/test_cases_7.json")
 	if err != nil {
 		return fmt.Sprintf("Error loading test cases: %v", err)
 	}
@@ -102,7 +102,7 @@ func FewShotChainOfThought(regulations string) string {
 	promptBuilder.WriteString(disharmonyPromptHeader)
 	promptBuilder.WriteString("\nBelow are some examples:")
 
-	testCases, err := LoadTestCases("../data/test_cases_7.json")
+	testCases, err := LoadTestCases("data/test_cases_7.json")
 	if err != nil {
 		return fmt.Sprintf("Error loading test cases: %v", err)
 	}
