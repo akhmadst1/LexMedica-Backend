@@ -1,22 +1,22 @@
 package main
 
 import (
+	"os"
 	"time"
 
 	"github.com/akhmadst1/tugas-akhir-backend/config"
 	"github.com/akhmadst1/tugas-akhir-backend/internal/handlers"
+	"github.com/akhmadst1/tugas-akhir-backend/middleware"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	// Load .env file
-	// if err := godotenv.Load(); err != nil {
-	// 	log.Fatal("Error loading .env file")
-	// }
-
 	// Initialize Supabase client
 	config.Init()
+
+	// Middleware
+	middleware.InitAuth(os.Getenv("SUPABASE_URL"))
 
 	// Initialize Router
 	r := gin.Default()
@@ -40,6 +40,7 @@ func main() {
 	chat := r.Group("/api/chat")
 	{
 		session := chat.Group("/session")
+		session.Use(middleware.RequireAuth())
 		{
 			session.POST("", handlers.CreateChatSession)
 			session.GET("/:user_id", handlers.GetChatSessionsByUserID)
@@ -47,17 +48,23 @@ func main() {
 		}
 
 		message := chat.Group("/message")
+		message.Use(middleware.RequireAuth())
 		{
 			message.POST("", handlers.CreateChatMessage)
 			message.GET("/:session_id", handlers.GetChatMessagesBySessionID)
 		}
 
 		disharmony := chat.Group("/disharmony")
+		disharmony.Use(middleware.RequireAuth())
 		{
 			disharmony.POST("", handlers.CreateChatDisharmony)
 		}
 
-		chat.POST("/document", handlers.CreateChatDocuments)
+		document := chat.Group("/document")
+		document.Use(middleware.RequireAuth())
+		{
+			document.POST("", handlers.CreateChatDocuments)
+		}
 
 		chat.POST("/qna", handlers.QNA)
 		chat.POST("/analyze", handlers.DisharmonyAnalysis)
