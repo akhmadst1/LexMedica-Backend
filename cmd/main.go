@@ -1,7 +1,6 @@
 package main
 
 import (
-	"os"
 	"time"
 
 	"github.com/akhmadst1/tugas-akhir-backend/config"
@@ -14,9 +13,6 @@ import (
 func main() {
 	// Initialize Supabase client
 	config.Init()
-
-	// Middleware
-	middleware.InitAuth(os.Getenv("SUPABASE_URL"))
 
 	// Initialize Router
 	r := gin.Default()
