@@ -13,6 +13,6 @@ func Init() {
 	_ = godotenv.Load()
 
 	url := os.Getenv("SUPABASE_URL")
-	key := os.Getenv("SUPABASE_ANON_KEY")
+	key := os.Getenv("SUPABASE_SERVICE_ROLE_KEY")
 	Supabase = supabase.CreateClient(url, key)
 }
