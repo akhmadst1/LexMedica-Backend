@@ -2,7 +2,6 @@ package repositories
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/akhmadst1/tugas-akhir-backend/config"
 	"github.com/akhmadst1/tugas-akhir-backend/internal/models"
@@ -44,7 +43,7 @@ func GetLinkDocumentByTypeNumberYear(documentType string, number string, year st
 	err := config.Supabase.DB.
 		From("link_documents").
 		Select(`*`).
-		Eq("type", strings.ToUpper(documentType)).
+		Eq("type", documentType).
 		Eq("number", number).
 		Eq("year", year).
 		Execute(&linkDocument)
