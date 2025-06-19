@@ -5,6 +5,7 @@ type ChatMessageDocument struct {
 	Clause       string       `json:"clause"`
 	DocumentID   int          `json:"document_id"`
 	Snippet      string       `json:"snippet"`
+	PageNumber   int          `json:"page_number"`
 	LinkDocument LinkDocument `json:"link_documents"`
 }
 

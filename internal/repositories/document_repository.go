@@ -21,6 +21,7 @@ func CreateChatDocuments(docs []models.ChatMessageDocument) ([]models.ChatMessag
 			"document_id": doc.DocumentID,
 			"clause":      doc.Clause,
 			"snippet":     doc.Snippet,
+			"page_number": doc.PageNumber,
 		}
 	}
 

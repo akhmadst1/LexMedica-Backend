@@ -14,6 +14,7 @@ func CreateChatDocuments(c *gin.Context) {
 		DocumentID int    `json:"document_id"`
 		Clause     string `json:"clause"`
 		Snippet    string `json:"snippet"`
+		PageNumber int    `json:"page_number"`
 	}
 
 	if err := c.BindJSON(&createRequests); err != nil {
@@ -28,6 +29,7 @@ func CreateChatDocuments(c *gin.Context) {
 			DocumentID: req.DocumentID,
 			Clause:     req.Clause,
 			Snippet:    req.Snippet,
+			PageNumber: req.PageNumber,
 		})
 	}
 
