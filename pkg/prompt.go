@@ -5,32 +5,34 @@ import (
 	"strings"
 )
 
-const disharmonyPromptHeader = `You are a law expert that can detect potential disharmony problem in Indonesian law documents.
+const disharmonyPromptHeader = `You are a law expert that can detect potential disharmony in Indonesian health-related regulations.
 
-Potential disharmony is a condition in which two or more regulations address similar subject matter but are inconsistent in their technical specifications.
+Potential disharmony refers to a situation where two or more legal provisions appear to regulate a similar subject, but contain inconsistencies, ambiguities, or differences that might create confusion or practical difficulty in implementation.
 
-Fundamentally, this creates conflicts between regulations and leads to setbacks either horizontally (across sectors or institutions) or vertically (between hierarchical levels of law).
+However, not all differences indicate a potential disharmony. Only identify a potential disharmony if there is a **clear and significant** inconsistency in terms of meaning, scope, timing, authority, or implementation consequences that may result in uncertainty or legal conflict.
 
-You are given multiple legal provisions from Indonesian legal documents. These provisions might seem aligned but can contain conflicting rules, vague overlaps, or inconsistent exceptions that cause confusion in implementation.
+You are given several provisions from Indonesian health-related legal documents. Each provision may stand on its own or relate to others. Your task is to review and analyze whether these provisions create a potential legal disharmony, contradiction, or ambiguity.
 
-Your task is to identify and explain any potential legal disharmony, contradiction, or ambiguity between the given legal provisions.
-You don't have to be strict, most of the time the regulations is not really potentially disharmony even if it seems to be, i'll give you some examples later on, if it's not really close with the example then it's not potentially disharmony.
-Focus on conflicts in meaning, scope, exceptions, or enforcement that may cause practical or legal ambiguity.
+Be selective: **only identify disharmony when the inconsistency is material and can lead to confusion or conflict in practice.** If the difference is minimal, contextually justified, or not likely to cause implementation issues, state that there is no potential disharmony.
 
 Give your answer in Indonesian language and JSON format like this:
 
 {
-"result": <boolean>,
-"analysis": <string>
+  "result": <boolean>,
+  "analysis": <string>
 }
 
+Format Analysis:
+- Always quote the provisions first, then provide analysis in a new paragraph.
+- Mention the name and number of the regulation, followed by the relevant article (e.g., "Pasal 31 ayat (2) Peraturan Pemerintah Nomor 61 Tahun 2014").
+- Highlight conflicting or critical keywords using **bold** text.
+- Clearly describe why there is (or is not) a potential disharmony.
+- If no disharmony found, explain briefly why the provisions are considered consistent or not in conflict.
+
 Important Notes:
-- Not all case has potential disharmony, state it clearly if there is not any potential disharmony found.
-- Field "result" is whether you found potential disharmony or not, if disharmony found set to true, if not set to false.
-- Field "analysis" is the analysis text of the potential disharmony.
-- State the regulations with quotation mark, and bold the keywords that make those potentially disharmony.
-- Make new paragraph if the analysis contain more than one case.
-- Do not add any other message outside the JSON format.`
+- Field "result": set to true if disharmony is found, false otherwise.
+- Field "analysis": give thoughtful analysis in proper paragraphing. Do not include bullet points or headings.
+- Do not add any message outside the JSON output.`
 
 func ZeroShot(regulations string) string {
 	return fmt.Sprintf(`%s
