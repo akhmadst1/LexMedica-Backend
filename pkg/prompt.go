@@ -18,8 +18,8 @@ Be selective: **only identify disharmony when the inconsistency is material and 
 Give your answer in Indonesian language and JSON format like this:
 
 {
-  "result": <boolean>,
-  "analysis": <string>
+	"analysis": <string>,
+	"result": <boolean>
 }
 
 Format Analysis:
@@ -30,8 +30,8 @@ Format Analysis:
 - If no disharmony found, explain briefly why the provisions are considered consistent or not in conflict.
 
 Important Notes:
-- Field "result": set to true if disharmony is found, false otherwise.
 - Field "analysis": give thoughtful analysis in proper paragraphing. Do not include bullet points or headings.
+- Field "result": set to true if disharmony is found based on the analysis, false otherwise.
 - Do not add any message outside the JSON output.`
 
 func ZeroShot(regulations string) string {
@@ -49,7 +49,7 @@ func FewShot(regulations string) string {
 	var fewShotPromptBuilder strings.Builder
 	fewShotPromptBuilder.WriteString(disharmonyPromptHeader)
 	fewShotPromptBuilder.WriteString("\nBelow are some examples of potential disharmony on Indonesian law regulations:")
-	testCases, err := LoadTestCases("data/test_cases_7.json")
+	testCases, err := LoadTestCases("data/test_cases_5.json")
 	if err != nil {
 		return fmt.Sprintf("Error loading test cases: %v", err)
 	}
@@ -107,7 +107,7 @@ func FewShotChainOfThought(regulations string) string {
 	promptBuilder.WriteString(disharmonyPromptHeader)
 	promptBuilder.WriteString("\nBelow are some examples:")
 
-	testCases, err := LoadTestCases("data/test_cases_7.json")
+	testCases, err := LoadTestCases("data/test_cases_5.json")
 	if err != nil {
 		return fmt.Sprintf("Error loading test cases: %v", err)
 	}

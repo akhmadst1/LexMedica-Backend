@@ -103,5 +103,41 @@
     ],
     "disharmony": "Berdasarkan ketentuan tersebut, terdapat potensi disharmoni antara Pasal 98 ayat (1) dan Pasal 111 ayat (3) UU Kesehatan dengan Pasal 4 UU Jaminan Produk Halal. Hal ini dikarenakan dalam UU Jaminan Produk Halal menyebutkan bahwa makanan, minuman, obat dan kosmetik masuk dalam definisi produk. Selanjutnya berdasarkan ketentuan Pasal 4 UU Jaminan Produk Halal, produk wajib bersertifikat halal. Sehingga UU Kesehatan perlu menyesuaikan dengan UU Jaminan Produk Halal dikarenakan UU Kesehatan belum mengakomodir terkait adanya kewajiban bersertifikat halal khususnya untuk sediaan farmasi, makanan dan minuman.",
     "reason": "1. Key Norms:\n- UU No. 36/2009 Pasal 98(1): Sediaan farmasi dan alat kesehatan harus aman, bermanfaat, bermutu, dan terjangkau.\n- UU No. 36/2009 Pasal 111(3): Label pada makanan dan minuman kemasan harus mencantumkan informasi produk.\n- UU No. 33/2014 Pasal 1(1): Produk termasuk makanan, minuman, obat, kosmetik, dll.\n- UU No. 33/2014 Pasal 4: Produk yang beredar di Indonesia wajib bersertifikat halal.\n\n2. Definitions, Scope, Responsibilities, Exceptions:\n- UU Kesehatan mengatur keamanan dan mutu produk kesehatan dan makanan.\n- UU JPH memperluas kewajiban dengan syarat halal.\n- Tidak terdapat penyesuaian eksplisit antara kedua rezim hukum dalam hal persyaratan halal.\n\n3. Entities & Descriptions:\n- Entitas: produsen, pemerintah, konsumen.\n- Subjek: makanan, minuman, obat; Objek: sertifikasi halal dan label mutu; Aksi: beredar, dikonsumsi, diberi label.\n\n4. Overlaps/Mismatches:\n- UU Kesehatan tidak menyebut sertifikasi halal secara eksplisit meskipun produk yang dimaksud berada dalam cakupan UU JPH.\n- Potensi disharmoni muncul akibat tumpang tindih regulasi yang tidak terintegrasi.\n\n5. Nominal Values, Titles, Cross-references:\n- Tidak ada nilai nominal.\n- Jabatan atau badan pelaksana tidak disebut secara langsung.\n- Tidak ada referensi silang eksplisit antar undang-undang.\n\n6. Number of Requirements:\n- UU Kesehatan menetapkan beberapa persyaratan teknis produk.\n- UU JPH menambahkan persyaratan tambahan yaitu kewajiban halal.\n\n7. Conclusion:\n- Terdapat potensi disharmoni karena perbedaan cakupan regulatif mengenai produk yang sama antara dua undang-undang."
+  },
+  {
+    "id": "tc3",
+    "title": "Pemberian ASI Eksklusif",
+    "regulations": [
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan",
+        "article": "Pasal 128 ayat (1)",
+        "content": "Setiap bayi berhak memperoleh Air Susu Ibu Eksklusif sejak dilahirkan selama 6 (enam) bulan, kecuali atas indikasi medis."
+      },
+      {
+        "document": "Peraturan Pemerintah Nomor 33 Tahun 2012 tentang Pemberian Air Susu Ibu Eksklusif",
+        "article": "Pasal 2",
+        "content": "Pemerintah, Pemerintah Daerah, dan masyarakat wajib mendukung program pemberian ASI Eksklusif selama 6 (enam) bulan, kecuali atas indikasi medis."
+      }
+    ],
+    "disharmony": "Tidak ditemukan potensi disharmoni",
+    "reason": "1. Key Norms:\n- Kedua regulasi menetapkan bahwa ASI Eksklusif diberikan selama 6 bulan, kecuali ada indikasi medis.\n\n2. Definitions, Scope, Responsibilities:\n- Tidak ada perbedaan pengertian atau ruang lingkup. UU menetapkan hak bayi, PP memperkuat dukungan pemerintah dan masyarakat.\n\n3. Entities & Descriptions:\n- Subjek dan objek seragam: bayi dan pemberi ASI. Aksi: pemberian ASI.\n\n4. Overlaps/Mismatches:\n- Tidak ada tumpang tindih atau pertentangan.\n\n5. Number of Requirements:\n- PP merupakan pelaksanaan dari amanat UU secara konsisten.\n\n6. Conclusion:\n- Tidak terdapat potensi disharmoni karena PP secara eksplisit melaksanakan ketentuan dalam UU dengan redaksi dan maksud yang selaras."
+  },
+  {
+    "id": "tc6",
+    "title": "Promosi Kesehatan",
+    "regulations": [
+      {
+        "document": "Undang-Undang Nomor 36 Tahun 2009 tentang Kesehatan",
+        "article": "Pasal 31",
+        "content": "Promosi kesehatan ditujukan untuk meningkatkan pengetahuan, kesadaran, kemauan, dan kemampuan hidup sehat bagi setiap orang."
+      },
+      {
+        "document": "Peraturan Menteri Kesehatan Nomor 74 Tahun 2014 tentang Pedoman Penyelenggaraan Promosi Kesehatan di Fasilitas Pelayanan Kesehatan",
+        "article": "Pasal 3",
+        "content": "Promosi kesehatan dilakukan dengan kegiatan komunikasi, informasi, dan edukasi tentang upaya hidup sehat kepada individu, kelompok, dan masyarakat di fasilitas pelayanan kesehatan."
+      }
+    ],
+    "disharmony": "Tidak ditemukan potensi disharmoni",
+    "reason": "1. Key Norms:\n- UU menetapkan tujuan umum promosi kesehatan, Permenkes merinci bentuk kegiatannya.\n\n2. Definitions, Scope, Responsibilities:\n- Permenkes memperluas cakupan teknis implementasi yang tidak bertentangan dengan UU.\n\n3. Entities & Descriptions:\n- Subjek dan objek tetap konsisten; UU menyasar setiap orang, Permenkes fokus pada fasilitas kesehatan.\n\n4. Overlaps/Mismatches:\n- Tidak terdapat overlap yang menimbulkan kontradiksi. Permenkes mengisi kekosongan teknis dari ketentuan UU.\n\n5. Conclusion:\n- Tidak ada potensi disharmoni karena substansi dan cakupan peraturan mendukung satu sama lain dalam konteks hierarki norma hukum."
   }
 ]
