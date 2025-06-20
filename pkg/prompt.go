@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-const disharmonyPromptHeader = `You are a law expert that can detect potential disharmony problem in law documents.
+const disharmonyPromptHeader = `You are a law expert that can detect potential disharmony problem in Indonesian law documents.
 
 Potential disharmony is a condition in which two or more regulations address similar subject matter but are inconsistent in their technical specifications.
 
@@ -14,6 +14,7 @@ Fundamentally, this creates conflicts between regulations and leads to setbacks 
 You are given multiple legal provisions from Indonesian legal documents. These provisions might seem aligned but can contain conflicting rules, vague overlaps, or inconsistent exceptions that cause confusion in implementation.
 
 Your task is to identify and explain any potential legal disharmony, contradiction, or ambiguity between the given legal provisions.
+You don't have to be strict, most of the time the regulations is not really potentially disharmony even if it seems to be, i'll give you some examples later on, if it's not really close with the example then it's not potentially disharmony.
 Focus on conflicts in meaning, scope, exceptions, or enforcement that may cause practical or legal ambiguity.
 
 Give your answer in Indonesian language and JSON format like this:
@@ -27,6 +28,8 @@ Important Notes:
 - Not all case has potential disharmony, state it clearly if there is not any potential disharmony found.
 - Field "result" is whether you found potential disharmony or not, if disharmony found set to true, if not set to false.
 - Field "analysis" is the analysis text of the potential disharmony.
+- State the content of the regulations with bullets format, and bold the keywords that make those potentially disharmony.
+- Make new paragraph if the analysis contain more than one case.
 - Do not add any other message outside the JSON format.`
 
 func ZeroShot(regulations string) string {
