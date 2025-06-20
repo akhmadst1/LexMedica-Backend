@@ -60,11 +60,11 @@ func FewShot(regulations string) string {
 		// }
 
 		var exRegText string
-		for _, reg := range ex.Regulations {
-			exRegText += fmt.Sprintf("Document: %s\nArticle: %s\nContent: %s\n\n", reg.Document, reg.Article, reg.Content)
+		for i, reg := range ex.Regulations {
+			exRegText += fmt.Sprintf("%d. %s %s:\n %s\n\n", i, reg.Document, reg.Article, reg.Content)
 		}
 		fewShotPromptBuilder.WriteString(fmt.Sprintf(
-			"\nInput Regulations:\n%s\nExpected Potential Disharmony Analysis Output:\n%s\n\n---\n", exRegText, ex.Disharmony))
+			"\n%s\n\n%s\n\n---\n", exRegText, ex.Disharmony))
 	}
 	fewShotPromptBuilder.WriteString("\nEnd of examples.\n\n")
 
