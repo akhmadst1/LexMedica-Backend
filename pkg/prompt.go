@@ -18,7 +18,7 @@ Be selective: **only identify disharmony when the inconsistency is material and 
 Give your answer in Indonesian language and JSON format like this:
 
 {
-	"analysis": <string>,
+	"analysis": "1. Pasal <number of clause> Ayat <number of verse>: <the verse text>\n2. Pasal <number of clause ....continue to all regulations involved>\n<string of analysis>,
 	"result": <boolean>
 }
 
