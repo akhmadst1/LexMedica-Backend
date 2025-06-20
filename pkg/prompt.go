@@ -28,7 +28,7 @@ Important Notes:
 - Not all case has potential disharmony, state it clearly if there is not any potential disharmony found.
 - Field "result" is whether you found potential disharmony or not, if disharmony found set to true, if not set to false.
 - Field "analysis" is the analysis text of the potential disharmony.
-- State the content of the regulations with bullets format, and bold the keywords that make those potentially disharmony.
+- State the regulations with quotation mark, and bold the keywords that make those potentially disharmony.
 - Make new paragraph if the analysis contain more than one case.
 - Do not add any other message outside the JSON format.`
 
