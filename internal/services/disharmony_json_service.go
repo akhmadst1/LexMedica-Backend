@@ -17,7 +17,7 @@ func OpenAIDisharmonyAnalysisJSON(regulations string, w http.ResponseWriter) err
 	prompt := pkg.ZeroShot(regulations)
 	openaiKey := os.Getenv("OPENAI_API_KEY")
 	openaiUrl := "https://api.openai.com/v1/chat/completions"
-	modelName := "gpt-4"
+	modelName := "gpt-4o-mini"
 
 	payload := map[string]interface{}{
 		"model": modelName,

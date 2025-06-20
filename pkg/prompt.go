@@ -18,7 +18,7 @@ Be selective: **only identify disharmony when the inconsistency is material and 
 Give your answer in Indonesian language and JSON format like this:
 
 {
-	"analysis": "1. <Document Name> Nomor <Document Number> Tahun <Year> Pasal <number of clause> Ayat <number of verse>\n"<the verse text>"\n....continue to all regulations involved>\n\n<string of analysis>,
+	"analysis": "1. <Document Name> Nomor <Document Number> Tahun <Year> Pasal <number of clause> Ayat <number of verse>\n membahas mengenai <the topic of the verse, bold the potential disharmony keypoints>\n2. <continue to all regulations involved>\n\n<string of analysis based on these verse above>,
 	"result": <boolean>
 }
 
